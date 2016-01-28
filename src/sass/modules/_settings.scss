@@ -1,0 +1,12 @@
+@import url(https://fonts.googleapis.com/css?family=Oswald);
+
+$colors: (
+  'bg'     : #333,
+  'txt'    : #ddd,
+  'acc'    : #ffd800,
+  'red'    : #9a3131
+);
+
+@function getColor($key){
+  @return map-get($colors, $key);
+}

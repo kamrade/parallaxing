@@ -1,0 +1,17 @@
+@import url(https://fonts.googleapis.com/css?family=Oswald);
+html, body {
+  background: #333;
+  color: #ddd;
+  font-family: Helvetica, Arial, sans-serif; }
+
+.title {
+  color: #ffd800;
+  text-transform: uppercase;
+  font-size: 6em;
+  font-family: 'Oswald', sans-serif; }
+
+.sub-title {
+  font-size: 2em; }
+
+.btn {
+  display: block; }

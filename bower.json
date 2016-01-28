@@ -1,0 +1,27 @@
+{
+  "name": "boilerplate",
+  "description": "template",
+  "main": "app.js",
+  "authors": [
+    "Kamrade"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "template"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.2.0"
+  }
+}
