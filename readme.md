@@ -1,7 +1,7 @@
 # Basic Gulp Project
 ### Used modules:
   - gulp-connect
-  - browserify (+ vinyls-source-stream)
+  - browserify (+ vinyls-source-stream + vinyl-buffer)
   - gulp-uglify
   - gulp-rename
   - gulp-sass
@@ -19,12 +19,9 @@
     * watching (browser livereload)
 
   2. Dist. In folder 'dist'.
-    * run server
     * copy html
     * compile sass
-    * uncss (delete unused classes)
     * minify css
     * browserify (concat js with dependencies)
     * uglify(compress) js
     * copy everything to ./dist
-    * watching (browser livereload)
