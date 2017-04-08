@@ -27,7 +27,7 @@
     * copy everything to ./dist
 ###  Workflow
   * clone project
-  * 'cd <project name>'
+  * 'cd project name'
   * 'npm install'
   * 'npm start' or 'gulp' for development
-  * 'npm run build'od 'gulp build' for build project. build you can find in dist folder
+  * 'npm run build' or 'gulp build' for build project. Build You can find in dist folder.
