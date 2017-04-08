@@ -25,3 +25,9 @@
     * browserify (concat js with dependencies)
     * uglify(compress) js
     * copy everything to ./dist
+###  Workflow
+  * clone project
+  * 'cd <project name>'
+  * 'npm install'
+  * 'npm start' or 'gulp' for development
+  * 'npm run build'od 'gulp build' for build project. build you can find in dist folder
