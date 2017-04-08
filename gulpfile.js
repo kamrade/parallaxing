@@ -1,5 +1,3 @@
-
-
 'use strict';
 
 //var livereload   = require('gulp-livereload');
@@ -13,7 +11,6 @@ var sass = require('gulp-sass');
 var autoPrefixer = require('gulp-autoprefixer');
 var uncss = require('gulp-uncss');
 var minifyCSS = require('gulp-minify-css');
-
 
 // html - copy index.html to dev and to dist
 gulp.task('html', function(){

@@ -1,4 +1,4 @@
-var $ = require('../../libs/jquery/dist/jquery');
+var $ = require('jquery');
 
 module.exports = function(output){
   console.log(output + " : this text is from console-debug module 04");

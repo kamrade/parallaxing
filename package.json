@@ -1,16 +1,16 @@
 {
-  "name": "boilerplate",
-  "version": "0.0.0",
-  "description": "template",
+  "name": "boilerplate-dandelion",
+  "version": "0.2.1",
+  "description": "simple boilerplate for small project with using jquery",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "gulp"
   },
   "keywords": [
-    "template"
+    "template, boilerplate, jquery"
   ],
-  "author": "Kamrade",
-  "license": "ISC",
+  "author": "Denis Michailov",
+  "license": "MIT",
   "devDependencies": {
     "browserify": "^13.0.0",
     "gulp": "^3.9.0",
@@ -22,6 +22,7 @@
     "gulp-sass": "^2.1.1",
     "gulp-uglify": "^1.5.1",
     "gulp-uncss": "^1.0.4",
+    "jquery": "^3.2.1",
     "vinyl-source-stream": "^1.1.0"
   }
 }
