@@ -1,0 +1,10 @@
+$colors: (
+  'bg'     : #fff,
+  'txt'    : #222629,
+  'accent'    : #ffd800,
+  'brand'    : #9a3131
+);
+
+@function getColor($key){
+  @return map-get($colors, $key);
+}
