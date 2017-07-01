@@ -9,8 +9,7 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var autoPrefixer = require('gulp-autoprefixer');
-var uncss = require('gulp-uncss');
-var minifyCSS = require('gulp-minify-css');
+var cleanCSS = require('gulp-clean-css');
 var buffer = require('vinyl-buffer');
 
 // html - copy index.html to dev and to dist
@@ -62,8 +61,7 @@ gulp.task('css', function(){
 			cascade: false
 		}))
     .pipe(rename('style.css'))
-    // .pipe(uncss({html:['./dist/index.html']}))
-    .pipe(minifyCSS(''))
+    .pipe( cleanCSS({compatibility: 'ie8'}) )
     .pipe(gulp.dest('./dist/css'));
 });
 
