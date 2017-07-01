@@ -42,7 +42,7 @@ gulp.task('compressjs', function() {
 });
 
 gulp.task('sass', function(){
-  return gulp.src('./src/sass/main.sass')
+  return gulp.src('./src/sass/main.scss')
     .pipe(sass())
     .pipe(autoPrefixer({
 			browsers: ['last 2 versions', '> 1%', 'IE 8'],
@@ -54,7 +54,7 @@ gulp.task('sass', function(){
 });
 
 gulp.task('css', function(){
-  return gulp.src('./src/sass/main.sass')
+  return gulp.src('./src/sass/main.scss')
     .pipe(sass())
     .pipe(autoPrefixer({
 			browsers: ['last 2 versions', '> 1%', 'IE 8'],
