@@ -1,17 +1,17 @@
 extend layouts/main
 
 block content
-  h1.title Testing 05
-  p.sub-title test
-  p.sub-tit very
+  .uk-container
+    .test-header
+      h1.title Testing 05
+      p.sub-title test
+      p.sub-tit very
 
-  .container
-    .row
-      .col-sm-3.bg
-        h3 1
-      .col-sm-3.bg
-        h3 2
-      .col-sm-3.bg
-        h3 3
-      .col-sm-3.bg
-        h3 4
+  
+    .uk-grid.uk-grid-small.uk-text-center(class="uk-child-width-expand@s", uk-grid )
+      div
+        .uk-card.uk-card-default.uk-card-body Item
+      div
+        .uk-card.uk-card-default.uk-card-body Item
+      div
+        .uk-card.uk-card-default.uk-card-body Item

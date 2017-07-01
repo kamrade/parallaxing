@@ -1,8 +1,10 @@
-@import '../../node_modules/uikit/src/scss/variables';
+// @import '../../node_modules/uikit/src/scss/variables';
+@import 'modules/uikit-theme-variables';
 @import '../../node_modules/uikit/src/scss/mixins';
 @import '../../node_modules/uikit/src/scss/uikit';
 
-@import 'modules/variables';
-@import 'grid/grid';
+// @import '../../node_modules/bootstrap/scss/bootstrap-grid';
+// @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 
+@import 'modules/variables';
 @import 'modules/demo';
