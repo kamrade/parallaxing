@@ -1,6 +1,6 @@
 {
   "name": "boilerplate-dandelion",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "simple boilerplate for small project with using jquery",
   "main": "app.js",
   "scripts": {
