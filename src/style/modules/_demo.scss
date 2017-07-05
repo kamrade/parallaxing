@@ -1,8 +1,9 @@
-.bg {
-  background-color: #e1e5e9;
-}
+$gray-base: #f1f5f9;
 
-.uk-card-default {
-  background-color: #fff;
-  border: 1px solid #a1a5a9;
+.card {
+  padding: 1rem;
+  background-color: $gray-base;
+  border: 1px solid darken($gray-base, 7%);
+  box-sizing: border-box;
+  border-radius: 4px;
 }

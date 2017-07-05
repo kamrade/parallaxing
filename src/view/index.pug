@@ -1,17 +1,25 @@
 extend layouts/main
 
 block content
-  .uk-container
+  .container
     .test-header
       h1.title Testing 05
       p.sub-title test
       p.sub-tit very
 
   
-    .uk-grid.uk-grid-small.uk-text-center(class="uk-child-width-expand@s", uk-grid )
-      div
-        .uk-card.uk-card-default.uk-card-body Item
-      div
-        .uk-card.uk-card-default.uk-card-body Item
-      div
-        .uk-card.uk-card-default.uk-card-body Item
+    .row.uk-margin-medium
+      .col-md-6
+        .card Item
+      .col-md-6
+        .card Item
+    .row.uk-margin-medium
+      .offset-md-2.col-lg-2
+        .card Item
+      .col-lg-2
+        .card Item
+      .offset-md-2.col-lg-2
+        .card Item
+      .col-lg-2
+        .card Item
+      
