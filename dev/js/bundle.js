@@ -10254,26 +10254,15 @@ return jQuery;
 } );
 
 },{}],2:[function(require,module,exports){
-var sayHello = require('./modules/say-hello');
-var consoleDebug = require('./modules/console-debug');
+// Libraries
 
-sayHello();
-consoleDebug('Me');
-
-},{"./modules/console-debug":3,"./modules/say-hello":4}],3:[function(require,module,exports){
-var $ = require('jquery');
-
-module.exports = function(output){
-  console.log(output + " : this text is from console-debug module 04");
-  $('.sub-title').text('We are glad to see you');
-};
-
-},{"jquery":1}],4:[function(require,module,exports){
-var $ = require('jquery');
-
-module.exports = function(){
-  console.log('Change heading text to Welcome Here');
-  $('.title').text('Welcome Here');
-};
+let $ = require('jquery');
+window.$ = $;
+window.jquery = $;
+window.jQuery = $;
+// let Tether = require('../../node_modules/tether/dist/js/tether');
+// window.Tether = Tether;
+// require('../../node_modules/bootstrap/dist/js/bootstrap');
+// let Handlebars = require('handlebars');
 
 },{"jquery":1}]},{},[2]);

@@ -25,6 +25,7 @@
     * browserify (concat js with dependencies)
     * uglify(compress) js
     * copy everything to ./dist
+
 ###  Workflow
   * clone project
   * 'cd project name'

@@ -12,6 +12,7 @@ var autoPrefixer = require('gulp-autoprefixer');
 var cleanCSS     = require('gulp-clean-css');
 var buffer       = require('vinyl-buffer');
 var pug          = require('gulp-pug');
+var pump         = require('pump');
 
 gulp.task('pug', function buildHTML() {
   return gulp.src('src/view/index.pug')
@@ -35,18 +36,16 @@ gulp.task('js', function(){
 });
 
 // minify concated js files and put it to dist
-gulp.task('compressjs', function() {
-  return browserify('src/js/main.js')
-    .bundle()
-    .pipe(vinylSource('bundle.js'))
-    .pipe(buffer())
-    .pipe(uglify())
-    // .pipe(rename('bundle.min.js'))
-    .pipe(gulp.dest('dist/js'));
+gulp.task('compressjs', ['js'], function(cb) {
+  pump([
+    gulp.src('./dev/bundle.js'),
+    uglify(),
+    gulp.dest('./dist/js')
+  ], cb );
 });
 
 gulp.task('sass', function(){
-  return gulp.src('src/style/main.scss')
+  return gulp.src('src/style/style.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(autoPrefixer({
 			browsers: ['last 2 versions', '> 1%', 'IE 8'],
@@ -57,14 +56,8 @@ gulp.task('sass', function(){
     .pipe(connect.reload());
 });
 
-gulp.task('css', function(){
-  return gulp.src('src/style/main.scss')
-    .pipe(sass())
-    .pipe(autoPrefixer({
-			browsers: ['last 2 versions', '> 1%', 'IE 8'],
-			cascade: false
-		}))
-    .pipe(rename('style.css'))
+gulp.task('css', ['sass'], function(){
+  return gulp.src('dev/css/style.css')
     .pipe( cleanCSS({compatibility: 'ie8'}) )
     .pipe(gulp.dest('dist/css'));
 });
@@ -79,8 +72,8 @@ gulp.task('connect-dev', function() {
 });
 
 gulp.task('watch', function(){
-  gulp.watch('./src/view/*.pug', ['pug']);
-  gulp.watch('./src/view/*.html', ['pug']);
+  gulp.watch('./src/view/**/*.pug', ['pug']);
+  gulp.watch('./src/view/**/*.html', ['pug']);
   gulp.watch('./src/js/**/*.js', ['js']);
   gulp.watch('./src/style/**/*.sass', ['sass']);
   gulp.watch('./src/style/**/*.scss', ['sass']);
