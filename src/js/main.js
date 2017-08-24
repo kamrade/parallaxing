@@ -1,9 +1,9 @@
 // Libraries
 
-// let $ = require('jquery');
-// window.$ = $;
-// window.jquery = $;
-// window.jQuery = $;
+let $ = require('jquery');
+window.$ = $;
+window.jquery = $;
+window.jQuery = $;
 
 // let Tether = require('../../node_modules/tether/dist/js/tether');
 // window.Tether = Tether;
