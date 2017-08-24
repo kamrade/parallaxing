@@ -14,6 +14,8 @@ var buffer       = require('vinyl-buffer');
 var pug          = require('gulp-pug');
 var pump         = require('pump');
 
+const babel      = require('gulp-babel');
+
 gulp.task('pug', function buildHTML() {
   return gulp.src('src/view/index.pug')
     .pipe(pug({
@@ -36,21 +38,22 @@ gulp.task('js', function(){
 });
 
 // minify concated js files and put it to dist
-gulp.task('compressjs', ['js'], function(cb) {
-  pump([
-    gulp.src('./dev/bundle.js'),
-    uglify(),
-    gulp.dest('./dist/js')
-  ], cb );
+gulp.task('compressjs', ['js'], function() {
+    gulp.src('./dev/js/bundle.js')
+    .pipe(babel({
+      presets: ['env']
+    }))
+    .pipe(uglify())
+    .pipe(gulp.dest('./dist/js'));
 });
 
 gulp.task('sass', function(){
   return gulp.src('src/style/style.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(autoPrefixer({
-			browsers: ['last 2 versions', '> 1%', 'IE 8'],
-			cascade: false
-		}))
+      browsers: ['last 2 versions', '> 1%', 'IE 8'],
+      cascade: false
+    }))
     .pipe(rename('style.css'))
     .pipe(gulp.dest('dev/css'))
     .pipe(connect.reload());
