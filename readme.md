@@ -1,4 +1,5 @@
 # Basic Gulp Project
+
 ### Used modules:
   - gulp-connect
   - browserify (+ vinyls-source-stream + vinyl-buffer)
@@ -8,6 +9,7 @@
   - gulp-autoprefixer
   - gulp-uncss
   - gulp-minify-css
+  - babel
 
 ###  Workflow
   1. Dev (Default). In folder 'dev'.
@@ -23,6 +25,7 @@
     * compile sass
     * minify css
     * browserify (concat js with dependencies)
+    * babelify js
     * uglify(compress) js
     * copy everything to ./dist
 

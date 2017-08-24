@@ -33,18 +33,18 @@ gulp.task('js', function(){
     .bundle()
     .pipe(vinylSource('bundle.js'))
     .pipe(rename('bundle.js'))
-    .pipe(gulp.dest('./dev/js'))
+    .pipe(gulp.dest('./dev'))
     .pipe(connect.reload());
 });
 
 // minify concated js files and put it to dist
 gulp.task('compressjs', ['js'], function() {
-    gulp.src('./dev/js/bundle.js')
+    gulp.src('./dev/bundle.js')
     .pipe(babel({
       presets: ['env']
     }))
     .pipe(uglify())
-    .pipe(gulp.dest('./dist/js'));
+    .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('sass', function(){
@@ -55,14 +55,14 @@ gulp.task('sass', function(){
       cascade: false
     }))
     .pipe(rename('style.css'))
-    .pipe(gulp.dest('dev/css'))
+    .pipe(gulp.dest('dev'))
     .pipe(connect.reload());
 });
 
 gulp.task('css', ['sass'], function(){
-  return gulp.src('dev/css/style.css')
+  return gulp.src('dev/style.css')
     .pipe( cleanCSS({compatibility: 'ie8'}) )
-    .pipe(gulp.dest('dist/css'));
+    .pipe(gulp.dest('dist'));
 });
 
 // server for dev
