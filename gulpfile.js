@@ -16,15 +16,23 @@ var pump         = require('pump');
 
 const babel      = require('gulp-babel');
 
-gulp.task('pug', function buildHTML() {
+gulp.task('pug', function () {
   return gulp.src('src/view/index.pug')
     .pipe(pug({
       pretty: true
     }))
     .pipe(rename('index.html'))
     .pipe(gulp.dest('./dev/'))
-    .pipe(gulp.dest('./dist/'))
     .pipe(connect.reload());
+});
+
+gulp.task('pug:dist', function () {
+  return gulp.src('src/view/index.pug')
+    .pipe(pug({
+      pretty: false
+    }))
+    .pipe(rename('index.html'))
+    .pipe(gulp.dest('./dist/'));
 });
 
 // concat js to one file and put it to dev
@@ -84,4 +92,4 @@ gulp.task('watch', function(){
 
 gulp.task('default', ['connect-dev', 'pug', 'sass', 'js', 'watch']);
 gulp.task('dev', ['connect-dev', 'pug', 'sass', 'js', 'watch']);
-gulp.task('build', ['pug', 'css', 'compressjs']);
+gulp.task('build', ['pug:dist', 'css', 'compressjs']);
