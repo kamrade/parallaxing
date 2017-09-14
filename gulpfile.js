@@ -1,20 +1,34 @@
 'use strict';
 
 //var livereload   = require('gulp-livereload');
-var gulp         = require('gulp');
-var connect      = require('gulp-connect');
-var browserify   = require('browserify');
-var vinylSource  = require('vinyl-source-stream');
-var uglify       = require('gulp-uglify');
-var rename       = require('gulp-rename');
-var sass         = require('gulp-sass');
-var autoPrefixer = require('gulp-autoprefixer');
-var cleanCSS     = require('gulp-clean-css');
-var buffer       = require('vinyl-buffer');
-var pug          = require('gulp-pug');
-var pump         = require('pump');
+const gulp         = require('gulp');
+const connect      = require('gulp-connect');
+const browserify   = require('browserify');
+const vinylSource  = require('vinyl-source-stream');
+const uglify       = require('gulp-uglify');
+const rename       = require('gulp-rename');
+const sass         = require('gulp-sass');
+const autoPrefixer = require('gulp-autoprefixer');
+const cleanCSS     = require('gulp-clean-css');
+const buffer       = require('vinyl-buffer');
+const pug          = require('gulp-pug');
+const pump         = require('pump');
 
-const babel      = require('gulp-babel');
+const babel        = require('gulp-babel');
+const imagemin     = require('gulp-imagemin');
+
+gulp.task('img:dev', function() {
+  gulp.src('src/img/*')
+    .pipe(imagemin())
+    .pipe(gulp.dest('./dev/img'))
+    .pipe(connect.reload());
+});
+
+gulp.task('img:dist', function() {
+  gulp.src('src/img/*')
+    .pipe(imagemin())
+    .pipe(gulp.dest('./dist/img'));
+});
 
 gulp.task('pug', function () {
   return gulp.src('src/view/index.pug')
@@ -88,8 +102,10 @@ gulp.task('watch', function(){
   gulp.watch('./src/js/**/*.js', ['js']);
   gulp.watch('./src/style/**/*.sass', ['sass']);
   gulp.watch('./src/style/**/*.scss', ['sass']);
+  gulp.watch('./src/img/**/*.jpg', ['img']);
+  gulp.watch('./src/img/**/*.png', ['img']);
 });
 
-gulp.task('default', ['connect-dev', 'pug', 'sass', 'js', 'watch']);
-gulp.task('dev', ['connect-dev', 'pug', 'sass', 'js', 'watch']);
-gulp.task('build', ['pug:dist', 'css', 'compressjs']);
+gulp.task('default', ['connect-dev', 'img:dev', 'pug', 'sass', 'js', 'watch']);
+gulp.task('dev', ['connect-dev', 'img:dev', 'pug', 'sass', 'js', 'watch']);
+gulp.task('build', ['pug:dist', 'css', 'img:dist', 'compressjs']);

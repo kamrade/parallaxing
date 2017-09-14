@@ -4,3 +4,11 @@
   padding: 2rem;
   border-radius: 8px;
 }
+
+.img-container {
+  position: relative;
+  img {
+    position: relative;
+    width: 100%;
+  }
+}
