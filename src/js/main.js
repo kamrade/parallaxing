@@ -10,9 +10,7 @@ window.jQuery = $;
 // require('../../node_modules/bootstrap/dist/js/bootstrap');
 // let Handlebars = require('handlebars');
 
-console.log("--- Basic Project ---");
-
-let img = () => ({
-  ret: 42
-});
+let simpleArray = [1,2,3];
+let newSimpleArray = [ ...simpleArray, 4, 5 ];
+let img = () => ({ ret: 42 });
 let importedModule = require('./module');
