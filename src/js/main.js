@@ -10,12 +10,9 @@ window.jQuery = $;
 // require('../../node_modules/bootstrap/dist/js/bootstrap');
 // let Handlebars = require('handlebars');
 
-console.log("Basic Project");
+console.log("--- Basic Project ---");
 
-let img = () => {
-  return 42;
-};
-console.log(img());
-
+let img = () => ({
+  ret: 42
+});
 let importedModule = require('./module');
-console.dir( importedModule );

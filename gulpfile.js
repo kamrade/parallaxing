@@ -14,12 +14,13 @@ const buffer       = require('vinyl-buffer');
 const pug          = require('gulp-pug');
 const pump         = require('pump');
 
+const babelify     = require('babelify');
 const babel        = require('gulp-babel');
 const imagemin     = require('gulp-imagemin');
 
 gulp.task('img:dev', function() {
   gulp.src('src/img/*')
-    .pipe(imagemin())
+    // .pipe(imagemin())
     .pipe(gulp.dest('./dev/img'))
     .pipe(connect.reload());
 });
@@ -49,17 +50,26 @@ gulp.task('pug:dist', function () {
     .pipe(gulp.dest('./dist/'));
 });
 
-// concat js to one file and put it to dev
-gulp.task('js', function(){
-  return browserify('src/js/main.js')
+gulp.task('js', function() {
+  return browserify({
+      entries: 'src/js/main.js'
+    })
+    .transform(babelify, { presets: ['env'] })
     .bundle()
+    .on('error', function(err) {
+      console.log(err.stack);
+      // notifier.notify({
+      //   'title': 'Compile Error',
+      //   message: err.message
+      // })
+      this.emit('end');
+    })
     .pipe(vinylSource('bundle.js'))
     .pipe(rename('bundle.js'))
     .pipe(gulp.dest('./dev'))
     .pipe(connect.reload());
 });
 
-// minify concated js files and put it to dist
 gulp.task('compressjs', ['js'], function() {
     gulp.src('./dev/bundle.js')
     .pipe(babel({
