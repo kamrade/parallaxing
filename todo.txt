@@ -1,2 +1,0 @@
-- separate dev and dist pug compiling proc
-- add rimraf (same as in angular build)

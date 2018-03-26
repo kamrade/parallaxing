@@ -1,8 +1,10 @@
+@import "./bootstrap/bootstrap";
+
 .container {
-  background-color: #45494f;
-  color: #fff;
-  padding: 2rem;
-  border-radius: 8px;
+  background-color: $gray-100;
+  color: $gray-800;
+  padding: 1rem;
+  border-radius: 3px;
 }
 
 .img-container {

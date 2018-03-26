@@ -1,7 +1,7 @@
 {
   "name": "boilerplate",
   "version": "0.2.5",
-  "description": "simple boilerplate for small project with using jquery",
+  "description": "simple boilerplate for small projects",
   "main": "app.js",
   "scripts": {
     "start": "rimraf dev && gulp",
@@ -9,7 +9,7 @@
     "serve:prod": "cd ./dist && python -m SimpleHTTPServer 8099"
   },
   "keywords": [
-    "template, boilerplate, jquery"
+    "template, boilerplate"
   ],
   "author": "Denis Michailov",
   "license": "MIT",
@@ -29,13 +29,12 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.1.1",
     "gulp-uglify": "^1.5.1",
-    "jquery": "^3.2.1",
     "pump": "^1.0.2",
     "rimraf": "^2.6.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
-    "bootstrap": "^4.0.0-alpha.6"
+    "bootstrap": "^4.0.0"
   }
 }
