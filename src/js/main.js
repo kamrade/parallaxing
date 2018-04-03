@@ -7,9 +7,11 @@ function Parallax() {
   this.d3SlidesContainer  = d3.select(this.slidesContainer);
   this.slides             = document.querySelectorAll('.slide');
   this.windowWidth        = window.innerWidth;
+
   this.easing             = false;
   // this.easingDown         = false;
   // this.easingUp           = false;
+
   this.transitionDuration = 1500;
 
   this.currentOffset = 0;
@@ -58,6 +60,12 @@ function Parallax() {
   }
 }
 
+function hidePreloader() {
+  let preloader = document.querySelector('.preloader');
+  preloader.style.display = 'none';
+}
+
 window.onload = () => {
+  hidePreloader();
   new Parallax();
 }
