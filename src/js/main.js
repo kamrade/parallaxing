@@ -9,8 +9,8 @@ function Parallax() {
   this.windowWidth        = window.innerWidth;
 
   this.easing             = false;
-  // this.easingDown         = false;
-  // this.easingUp           = false;
+  this.easingDown         = false;
+  this.easingUp           = false;
 
   this.transitionDuration = 1500;
 
@@ -28,9 +28,11 @@ function Parallax() {
 
     if (!this.easing) {
       if (event.deltaY < 0) {
+        console.log('scroll up');
         this.diff = this.step;
       }
       if (event.deltaY > 0) {
+        console.log('scroll down');
         this.diff = -1 * this.step;
       }
 
