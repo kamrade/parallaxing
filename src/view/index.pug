@@ -1,5 +1,10 @@
 extend layouts/main
 
 block content
-  include ./html/main.html
+  include ./modules/header.pug
+  main.main
+    include ./modules/slides.pug
+    include ./modules/slide-toggler.html
+      
+  include ./modules/preloader.html
     

@@ -5,7 +5,7 @@ module.exports = function(ParallaxConstructor) {
   ParallaxConstructor.prototype.transition = function transition(easing) {
     this.currentOffset = this.currentOffset + this.diff;
     if (this.currentOffset <= 0) {
-      if (this.currentOffset > (-1 * this.maxOffset)) {
+      if (this.currentOffset > (-1 * (this.maxOffset + this.stepWidth))) {
 
         this.d3SlidesContainer
           .transition()
@@ -25,6 +25,20 @@ module.exports = function(ParallaxConstructor) {
       this[easing] = false;
     }, this.transitionDuration * 1.2);
 
+  }
+
+  ParallaxConstructor.prototype.transitionTo = function transitionTo(slide) {
+
+    this.currentOffset = -1 * ((slide - 1) * this.stepWidth);
+    if (this.currentOffset <= 0 && this.currentOffset > (-1 * (this.maxOffset + this.stepWidth))) {
+
+      this.d3SlidesContainer
+        .transition()
+        .duration(this.transitionDuration/2)
+        .ease(d3.easeQuadInOut)
+        .style("left", `${this.currentOffset}px`);
+
+    }
   }
 
   return ParallaxConstructor;

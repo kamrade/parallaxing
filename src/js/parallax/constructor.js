@@ -9,16 +9,16 @@ module.exports = function ParallaxConstructor() {
   this.easingDown         = false;
   this.easingUp           = false;
 
-  this.transitionDuration = 1500;
+  this.transitionDuration = 1200;
 
   this.currentOffset = 0;
   this.diff          = 0;
-  this.step          = this.windowWidth;
+  this.stepWidth     = this.windowWidth;
   this.currentStep   = 1;
 
   this.slidesCount                 = this.slides.length;
   this.slidesWidth                 = this.slidesCount * this.windowWidth;
-  this.maxOffset                   = this.slidesCount * this.windowWidth;
+  this.maxOffset                   = (this.slidesCount - 1) * this.windowWidth;
   this.slidesContainer.style.width = `${this.slidesWidth}px`;
 
   window.onwheel = (event) => {
@@ -26,16 +26,16 @@ module.exports = function ParallaxConstructor() {
 
     if (event.deltaY < 0) {
       if (!this.easingUp) {
-        this.diff = this.step;
+        this.diff = this.stepWidth;
         this.transition('easingUp');
-        console.log( this.getStep() );
+        this.calcSlide();
       }
     }
     if (event.deltaY > 0) {
       if (!this.easingDown) {
-        this.diff = -1 * this.step;
+        this.diff = -1 * this.stepWidth;
         this.transition('easingDown');
-        console.log( this.getStep() );
+        this.calcSlide();
       }
     }
 
