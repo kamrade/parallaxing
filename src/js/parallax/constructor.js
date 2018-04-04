@@ -4,6 +4,7 @@ module.exports = function ParallaxConstructor() {
   this.slidesContainer    = document.querySelector('.slides-container');
   this.d3SlidesContainer  = d3.select(this.slidesContainer);
   this.slides             = document.querySelectorAll('.slide');
+  this.slide_01_content_block = this.slidesContainer.querySelector('.slide-content--block');
   this.windowWidth        = window.innerWidth;
 
   this.easingDown         = false;
@@ -14,7 +15,7 @@ module.exports = function ParallaxConstructor() {
   this.currentOffset = 0;
   this.diff          = 0;
   this.stepWidth     = this.windowWidth;
-  this.currentStep   = 1;
+  this.currentSlide  = 1;
 
   this.slidesCount                 = this.slides.length;
   this.slidesWidth                 = this.slidesCount * this.windowWidth;
@@ -28,14 +29,13 @@ module.exports = function ParallaxConstructor() {
       if (!this.easingUp) {
         this.diff = this.stepWidth;
         this.transition('easingUp');
-        this.calcSlide();
+        console.log(this.currentSlide);
       }
     }
     if (event.deltaY > 0) {
       if (!this.easingDown) {
         this.diff = -1 * this.stepWidth;
         this.transition('easingDown');
-        this.calcSlide();
       }
     }
 

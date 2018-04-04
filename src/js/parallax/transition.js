@@ -19,6 +19,7 @@ module.exports = function(ParallaxConstructor) {
     } else {
       this.currentOffset = 0;
     }
+    this.calcSlide();
 
     this[easing] = true;
     setTimeout(() => {
@@ -28,8 +29,9 @@ module.exports = function(ParallaxConstructor) {
   }
 
   ParallaxConstructor.prototype.transitionTo = function transitionTo(slide) {
-
+    let saveOffset = this.currentOffset;
     this.currentOffset = -1 * ((slide - 1) * this.stepWidth);
+
     if (this.currentOffset <= 0 && this.currentOffset > (-1 * (this.maxOffset + this.stepWidth))) {
 
       this.d3SlidesContainer
@@ -38,7 +40,11 @@ module.exports = function(ParallaxConstructor) {
         .ease(d3.easeQuadInOut)
         .style("left", `${this.currentOffset}px`);
 
+    } else {
+      this.currentOffset = saveOffset;
     }
+
+    this.calcSlide();
   }
 
   return ParallaxConstructor;

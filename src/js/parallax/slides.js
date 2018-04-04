@@ -1,12 +1,12 @@
 module.exports = function(ParallaxConstructor) {
 
   ParallaxConstructor.prototype.calcSlide = function calcSlide() {
-    this.currentStep = this.currentOffset === 0 ? 1 : -1 * (this.currentOffset / this.stepWidth ) + 1;
-    return this.currentStep;
+    this.currentSlide = this.currentOffset === 0 ? 1 : -1 * (this.currentOffset / this.stepWidth ) + 1;
+    return this.currentSlide;
   }
 
   ParallaxConstructor.prototype.getSlide = function getSlide() {
-    return this.currentStep;
+    return this.currentSlide;
   }
 
   ParallaxConstructor.prototype.setSlide = function setSlide(step) {
