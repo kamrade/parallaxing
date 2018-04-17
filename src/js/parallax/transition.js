@@ -3,23 +3,18 @@ let d3 = require('d3');
 module.exports = function(ParallaxConstructor) {
 
   ParallaxConstructor.prototype.transition = function transition(easing) {
-    this.currentOffset = this.currentOffset + this.diff;
-    if (this.currentOffset <= 0) {
-      if (this.currentOffset > (-1 * (this.maxOffset + this.stepWidth))) {
 
-        this.d3SlidesContainer
-          .transition()
-          .duration(this.transitionDuration)
-          .ease(d3.easeQuadInOut)
-          .style("left", `${this.currentOffset}px`);
-
-      } else {
-        this.currentOffset = (-1 * this.maxOffset - this.diff);
+    if (easing === 'easingUp') {
+      if (this.currentSlide !== 1) {
+        let newSlide = this.currentSlide - 1;
+        this.setSlide(newSlide);
       }
-    } else {
-      this.currentOffset = 0;
+    } else if (easing === 'easingDown') {
+      if (this.currentSlide !== this.slidesCount) {
+        let newSlide = this.currentSlide + 1;
+        this.setSlide(newSlide);
+      }
     }
-    this.calcSlide();
 
     this[easing] = true;
     setTimeout(() => {
@@ -28,36 +23,26 @@ module.exports = function(ParallaxConstructor) {
 
   }
 
-  ParallaxConstructor.prototype.transitionTo = function transitionTo(slide) {
-    let saveOffset = this.currentOffset;
-    this.currentOffset = -1 * ((slide - 1) * this.stepWidth);
+  ParallaxConstructor.prototype.setSlide = function setSlide(slide) {
+    if (slide > 0 && slide < (this.slidesCount + 1)) {
 
-    if (this.currentOffset <= 0 && this.currentOffset > (-1 * (this.maxOffset + this.stepWidth))) {
+      this.slideBlocks[this.currentSlide - 1].forEach(block => {
+        block.style.transform = 'translateX(100px)';
+      });
 
+      this.currentSlide  = slide;
+      this.currentOffset = -1 * (this.currentSlide - 1) * this.stepWidth;
       this.d3SlidesContainer
         .transition()
-        .duration(this.transitionDuration/2)
+        .duration(this.transitionDuration)
         .ease(d3.easeQuadInOut)
         .style("left", `${this.currentOffset}px`);
 
-    } else {
-      this.currentOffset = saveOffset;
+      this.slideBlocks[slide - 1].forEach(block => {
+        block.style.transform = 'translateX(0px)';
+      });
+
     }
-
-    this.calcSlide();
-  }
-
-  ParallaxConstructor.prototype.calcSlide = function calcSlide() {
-    this.currentSlide = this.currentOffset === 0 ? 1 : -1 * (this.currentOffset / this.stepWidth ) + 1;
-    return this.currentSlide;
-  }
-
-  ParallaxConstructor.prototype.getSlide = function getSlide() {
-    return this.currentSlide;
-  }
-
-  ParallaxConstructor.prototype.setSlide = function setSlide(step) {
-    this.transitionTo(step);
   }
 
   return ParallaxConstructor;
