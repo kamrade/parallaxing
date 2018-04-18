@@ -1,6 +1,5 @@
 'use strict';
 
-//var livereload   = require('gulp-livereload');
 const gulp         = require('gulp');
 const connect      = require('gulp-connect');
 const browserify   = require('browserify');
@@ -20,7 +19,6 @@ const imagemin     = require('gulp-imagemin');
 
 gulp.task('img:dev', function() {
   gulp.src('src/img/*')
-    // .pipe(imagemin())
     .pipe(gulp.dest('./dev/img'))
     .pipe(connect.reload());
 });
@@ -42,21 +40,30 @@ gulp.task('img:dist', function() {
 });
 
 gulp.task('pug', function () {
-  return gulp.src('src/view/index.pug')
+  return gulp.src('src/view/*.pug')
     .pipe(pug({
       pretty: true
     }))
-    .pipe(rename('index.html'))
     .pipe(gulp.dest('./dev/'))
     .pipe(connect.reload());
 });
 
 gulp.task('pug:dist', function () {
-  return gulp.src('src/view/index.pug')
+  return gulp.src('src/view/*.pug')
     .pipe(pug({
       pretty: false
     }))
-    .pipe(rename('index.html'))
+    .pipe(gulp.dest('./dist/'));
+});
+
+gulp.task('html', function () {
+  return gulp.src('src/view/*.html')
+    .pipe(gulp.dest('./dev/'))
+    .pipe(connect.reload());
+});
+
+gulp.task('html:dist', function () {
+  return gulp.src('src/view/*.html')
     .pipe(gulp.dest('./dist/'));
 });
 
@@ -68,10 +75,6 @@ gulp.task('js', function() {
     .bundle()
     .on('error', function(err) {
       console.log(err.stack);
-      // notifier.notify({
-      //   'title': 'Compile Error',
-      //   message: err.message
-      // })
       this.emit('end');
     })
     .pipe(vinylSource('bundle.js'))
@@ -89,7 +92,7 @@ gulp.task('compressjs', ['js'], function() {
     .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('sass', function(){
+gulp.task('sass', function() {
   return gulp.src('src/style/style.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(autoPrefixer({
@@ -101,7 +104,7 @@ gulp.task('sass', function(){
     .pipe(connect.reload());
 });
 
-gulp.task('css', ['sass'], function(){
+gulp.task('css', ['sass'], function() {
   return gulp.src('dev/style.css')
     .pipe( cleanCSS({compatibility: 'ie8'}) )
     .pipe(gulp.dest('dist'));
@@ -116,9 +119,9 @@ gulp.task('connect-dev', function() {
   });
 });
 
-gulp.task('watch', function(){
+gulp.task('watch', function() {
   gulp.watch('./src/view/**/*.pug', ['pug']);
-  gulp.watch('./src/view/**/*.html', ['pug']);
+  gulp.watch('./src/view/**/*.html', ['pug', 'html']);
   gulp.watch('./src/js/**/*.js', ['js']);
   gulp.watch('./src/style/**/*.sass', ['sass']);
   gulp.watch('./src/style/**/*.scss', ['sass']);
@@ -126,6 +129,6 @@ gulp.task('watch', function(){
   gulp.watch('./src/img/**/*.png', ['img:dev']);
 });
 
-gulp.task('default', ['connect-dev', 'img:dev', 'pug', 'sass', 'js', 'watch']);
-gulp.task('dev', ['connect-dev', 'img:dev', 'pug', 'sass', 'js', 'watch']);
-gulp.task('build', ['pug:dist', 'css', 'img:dist', 'compressjs']);
+gulp.task('default', ['connect-dev', 'img:dev', 'pug', 'html', 'sass', 'js', 'watch']);
+gulp.task('dev', ['connect-dev', 'img:dev', 'pug', 'html', 'sass', 'js', 'watch']);
+gulp.task('build', ['pug:dist', 'html:dist', 'css', 'img:dist', 'compressjs']);
