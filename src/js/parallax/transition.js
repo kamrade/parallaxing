@@ -1,6 +1,6 @@
 let d3 = require('d3');
 
-module.exports = function(ParallaxConstructor) {
+module.exports = function transitions(ParallaxConstructor) {
 
   ParallaxConstructor.prototype.transition = function transition(easing) {
 

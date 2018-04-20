@@ -1,4 +1,5 @@
 let d3 = require('d3');
+let _ = require('lodash');
 
 module.exports = function ParallaxConstructor() {
 
@@ -25,6 +26,7 @@ module.exports = function ParallaxConstructor() {
   this.easingDown         = false;
   this.easingUp           = false;
   this.transitionDuration = 1200;
+  this.throttlingInterval = 500; // ms
   this.currentOffset      = 0;
   this.currentSlide       = 1;
   this.stepWidth          = this.windowWidth;
@@ -38,6 +40,8 @@ module.exports = function ParallaxConstructor() {
   this.slidesContainer.style.width = `${this.slidesWidth}px`;
 
   // event handlers
+  window.onresize = _.throttle(this.updateSize.bind(this), this.throttlingInterval);
+
   window.onwheel = (event) => {
     event.preventDefault();
 

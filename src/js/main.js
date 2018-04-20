@@ -1,6 +1,7 @@
 console.log(':: start');
 
 let ParallaxConstructor = require('./parallax/constructor');
+ParallaxConstructor = require('./parallax/helpers')(ParallaxConstructor);
 ParallaxConstructor = require('./parallax/transition')(ParallaxConstructor);
 
 function Parallax() {

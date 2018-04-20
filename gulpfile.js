@@ -18,13 +18,13 @@ const babel        = require('gulp-babel');
 const imagemin     = require('gulp-imagemin');
 
 gulp.task('img:dev', function() {
-  gulp.src('src/img/*')
+  gulp.src('src/img/**/*')
     .pipe(gulp.dest('./dev/img'))
     .pipe(connect.reload());
 });
 
 gulp.task('img:dist', function() {
-  gulp.src('src/img/*')
+  gulp.src('src/img/**/*')
     .pipe(imagemin([
       imagemin.gifsicle({interlaced: true}),
       imagemin.jpegtran({progressive: true}),
