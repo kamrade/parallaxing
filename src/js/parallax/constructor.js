@@ -1,5 +1,6 @@
 let d3 = require('d3');
 let _ = require('lodash');
+const options = require('./options');
 
 module.exports = function ParallaxConstructor() {
 
@@ -9,7 +10,7 @@ module.exports = function ParallaxConstructor() {
   this.slides             = document.querySelectorAll('.slide');
   this.windowWidth        = window.innerWidth;
 
-  // cashe slide-blocks
+  // cashe and initialization slide-blocks
   this.slideBlocks = [];
   this.slides.forEach((slide, i) => {
     let blocks = slide.querySelectorAll('.slide-content--block');
@@ -18,15 +19,15 @@ module.exports = function ParallaxConstructor() {
 
   this.slideBlocks.map(slideBlock => {
     slideBlock.forEach(block => {
-      block.style.transform = 'translateX(100px)';
+      block.style.transform = 'translateX(0px) rotate(0deg)';
     });
   });
 
   // init
   this.easingDown         = false;
   this.easingUp           = false;
-  this.transitionDuration = 1200;
-  this.throttlingInterval = 500; // ms
+  this.transitionDuration = options.transitionDuration;
+  this.throttlingInterval = options.throttlingInterval;
   this.currentOffset      = 0;
   this.currentSlide       = 1;
   this.stepWidth          = this.windowWidth;

@@ -27,7 +27,7 @@ module.exports = function transitions(ParallaxConstructor) {
     if (slide > 0 && slide < (this.slidesCount + 1)) {
 
       this.slideBlocks[this.currentSlide - 1].forEach(block => {
-        block.style.transform = 'translateX(100px)';
+        block.style.transform = 'translateX(300px) rotate(30deg)';
       });
 
       this.currentSlide  = slide;
@@ -39,7 +39,7 @@ module.exports = function transitions(ParallaxConstructor) {
         .style("left", `${this.currentOffset}px`);
 
       this.slideBlocks[slide - 1].forEach(block => {
-        block.style.transform = 'translateX(0px)';
+        block.style.transform = 'translateX(0px) rotate(0deg)';
       });
 
     }

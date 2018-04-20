@@ -1,0 +1,70 @@
+.slides-container
+  display: flex
+  position: relative
+  left: 0
+
+.slide
+  height: 100vh
+  width: 100vw
+  display: flex
+  position: relative
+
+  &.slide-01
+    background-color: $gray-300
+  &.slide-02
+    background-color: $gray-200
+  &.slide-03
+    background-color: $gray-300
+  &.slide-04
+    background-color: $gray-200
+  &.slide-05
+    background-color: $gray-300
+  &.slide-06
+    background-color: $gray-200
+
+  // &.slide-01
+  //   background-color: #FFBE0B
+  // &.slide-02
+  //   background-color: #FB5607
+  // &.slide-03
+  //   background-color: #FF006E
+  // &.slide-04
+  //   background-color: #8338EC
+  // &.slide-05
+  //   background-color: #3A86FF
+  // &.slide-06
+  //   background-color: #353944
+
+  .slide-content
+    margin: auto
+    font-size: 80px
+    font-weight: 300
+    color: $gray-800
+
+    .slide-main-image
+      position: absolute
+      left: 0
+      top: 0
+      width: 50%
+      height: 80%
+      overflow: hidden
+      background-image: url('/img/mountains.jpg')
+      background-repeat: no-repeat
+      background-position: 25% 0%
+      background-size: 120%
+      background-attachment: fixed
+
+  .slide-content--block
+    position: absolute
+    z-index: 999
+    top: 25%
+    left: 75%
+    width: 150px
+    height: 150px
+    background-color: transparent
+    border-radius: 50%
+    transition: transform 1.5s .25s ease-in-out
+
+    .slide-content--block-img
+      max-height: 100%
+      max-width: 100%
