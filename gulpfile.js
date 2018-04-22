@@ -114,7 +114,7 @@ gulp.task('css', ['sass'], function() {
 gulp.task('connect-dev', function() {
   connect.server({
     root: './dev',
-    port: 8088,
+    port: 8081,
     livereload: true
   });
 });
