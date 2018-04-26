@@ -17,6 +17,8 @@ const babelify     = require('babelify');
 const babel        = require('gulp-babel');
 const imagemin     = require('gulp-imagemin');
 
+const browserSync = require('browser-sync').create();
+
 gulp.task('img:dev', function() {
   gulp.src('src/img/**/*')
     .pipe(gulp.dest('./dev/img'))
@@ -112,11 +114,19 @@ gulp.task('css', ['sass'], function() {
 
 // server for dev
 gulp.task('connect-dev', function() {
+
   connect.server({
     root: './dev',
     port: 8081,
     livereload: true
   });
+
+  browserSync.init({
+		open: 'external',
+		proxy: 'localhost:8081',
+		port: 8082
+	});
+
 });
 
 gulp.task('watch', function() {
