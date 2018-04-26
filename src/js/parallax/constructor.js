@@ -9,19 +9,7 @@ module.exports = function ParallaxConstructor() {
   this.d3SlidesContainer  = d3.select(this.slidesContainer);
   this.slides             = document.querySelectorAll('.slide');
   this.windowWidth        = window.innerWidth;
-
-  // cashe and initialization slide-blocks
-  this.slideBlocks = [];
-  this.slides.forEach((slide, i) => {
-    let blocks = slide.querySelectorAll('.slide-content--block');
-    this.slideBlocks.push(blocks);
-  });
-
-  this.slideBlocks.map(slideBlock => {
-    slideBlock.forEach(block => {
-      block.style.transform = 'translateX(0px) rotate(0deg)';
-    });
-  });
+  this.windowHeight       = window.innerHeight;
 
   // init
   this.easingDown         = false;
@@ -40,6 +28,14 @@ module.exports = function ParallaxConstructor() {
   // setup
   this.slidesContainer.style.width = `${this.slidesWidth}px`;
 
+  // init active class
+  this.slides[this.currentSlide - 1].classList.add('active');
+
+  // this.slides.forEach(slide => slide.style.height = that.windowHeight);
+  // console.log(that.windowHeight);
+
+
+  // --------------------------------------------------------------------------------
   // event handlers
   window.onresize = _.throttle(this.updateSize.bind(this), this.throttlingInterval);
 

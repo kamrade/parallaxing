@@ -1,9 +1,38 @@
-.slide-main-image
-  width: 100%
-  height: 100vh
-  overflow: hidden
-  background-image: url('/img/james-connolly-363036-unsplash.jpg')
-  background-repeat: no-repeat
-  background-position: 25% 0%
-  background-size: 120%
-  background-attachment: fixed
+.slide-01
+  .sidebar
+    padding-top: 2rem
+    padding-left: 2rem
+    .title
+      font-size: 1rem
+      text-transform: uppercase
+      letter-spacing: 1px
+  .slide-main-image
+    width: calc(100% - 2rem)
+    height: calc(100vh - 4rem)
+    margin-top: 2rem
+    // position: relative
+    // overflow: hidden
+    background-image: url('/img/figma_dark-one_theme.png')
+    background-repeat: no-repeat
+    background-position: top left
+    background-size: contain
+    background-attachment: fixed
+    // border-radius: 2px
+    transition: all 1s ease-in-out
+
+  .animated-text
+    padding: 1rem
+    background-color: $primary
+    color: $white
+    position: absolute
+    right: 420px
+    bottom: 120px
+    border-radius: 6px
+    transition: transform .75s .2s ease-in-out
+    transform: translateX(400px)
+
+  &.active
+    .animated-text
+      transform: translateX(0px)
+    .slide-main-image
+      background-position: top right

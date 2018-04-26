@@ -1,5 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Space+Mono:400,400i,700,700i');
+
 @import "./bootstrap/bootstrap";
-@import "./modules/header";
 @import "./modules/main";
 @import "./modules/slides";
+@import "./modules/slide-parallaxors";
 @import "./modules/slide-toggler";
+
+body {
+  font-family: 'Space Mono', monospace;
+}
