@@ -5,19 +5,19 @@
     .title
       font-size: 1rem
       text-transform: uppercase
-      letter-spacing: 1px
+      letter-spacing: 2px
+      font-weight: 600
+
   .slide-main-image
     width: calc(100% - 2rem)
     height: calc(100vh - 4rem)
+    position: relative
     margin-top: 2rem
-    // position: relative
-    // overflow: hidden
-    background-image: url('/img/figma_dark-one_theme.png')
+    background-image: url('/img/screen_figma_one-dark.png')
     background-repeat: no-repeat
-    background-position: top left
-    background-size: contain
+    background-position: calc(0% + 40rem) 50%
+    background-size: cover
     background-attachment: fixed
-    // border-radius: 2px
     transition: all 1s ease-in-out
 
   .animated-text
@@ -35,4 +35,26 @@
     .animated-text
       transform: translateX(0px)
     .slide-main-image
-      background-position: top right
+      background-position: 0% 50%
+
+.welcome-container
+  position: absolute
+  height: 100%
+  width: 100%
+  z-index: 2
+  top: 0
+  left: 0
+  display: flex
+
+  .welcome-block
+    margin: auto
+    margin-left: 4rem
+    background-color: $accent
+    padding: 2rem
+    min-width: 200%
+    .welcome-title
+      font-size: 2rem
+      text-transform: uppercase
+      font-weight: 600
+      letter-spacing: 4px
+    .welcome-text
