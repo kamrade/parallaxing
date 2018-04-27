@@ -2,6 +2,19 @@
   .sidebar
     padding-top: 2rem
     padding-left: 2rem
+    position: relative
+    height: 100%
+    .menu-toggler
+      position: absolute
+      z-index: 99
+      left: 1rem
+      top: 50%
+      transform: translateY(-50%)
+      cursor: pointer
+      padding: .5rem
+      transition: all .75s ease-in-out
+      &:hover
+        background-color: darken($accent, 4%)
     .title
       font-size: 1rem
       text-transform: uppercase
@@ -52,9 +65,32 @@
     background-color: $accent
     padding: 2rem
     min-width: 200%
+    position: relative
+
     .welcome-title
       font-size: 2rem
       text-transform: uppercase
       font-weight: 600
       letter-spacing: 4px
     .welcome-text
+
+    .slide-control
+      width: 3rem
+      height: 3rem
+      padding: .25rem
+      text-align: center
+      line-height: 2.5rem
+      background-color: $white
+      position: absolute
+      cursor: pointer
+      transition: all .5s ease-in-out
+      &:hover
+        background-color: $primary
+
+      &.prev-slide
+        top: 100%
+        left: 100%
+
+      &.next-slide
+        top: calc(100% + 3rem)
+        left: calc(100% + 3rem)
