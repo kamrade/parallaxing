@@ -1,13 +1,15 @@
 var throttle = require('throttle-debounce/throttle');
+import $ from 'jquery';
 const options = require('./options');
 
 module.exports = function ParallaxConstructor() {
 
   // cashe dom
-  this.slidesContainer    = document.querySelector('.slides-container');
-  this.slides             = document.querySelectorAll('.slide');
-  this.windowWidth        = window.innerWidth;
-  this.windowHeight       = window.innerHeight;
+  this.$slidesContainer   = $('.slides-container');
+  this.$slides            = $('.slide');
+  let $window             = $(window);
+  this.windowWidth        = $window.width();
+  this.windowHeight       = $window.height();
 
   // init
   this.easingDown         = false;
@@ -19,15 +21,31 @@ module.exports = function ParallaxConstructor() {
   this.stepWidth          = this.windowWidth;
 
   // calc values
-  this.slidesCount        = this.slides.length;
+  this.slidesCount        = this.$slides.length;
   this.slidesWidth        = this.slidesCount * this.windowWidth;
   this.maxOffset          = (this.slidesCount - 1) * this.windowWidth;
 
   // setup
-  this.slidesContainer.style.width = `${this.slidesWidth}px`;
+  this.$slidesContainer.width(`${this.slidesWidth}px`);
 
   // init active class
-  this.slides[this.currentSlide - 1].classList.add('active');
+  this.$slides.eq(this.currentSlide - 1).addClass('active');
+
+  // playground
+  let $welcomeTitle = $('.welcome-title');
+  let n = 1;
+  let initialText = $welcomeTitle.text();
+  let typingSpeed = 120;
+  let cycles = initialText.length;
+  
+  let interval = setInterval(function() {
+    $welcomeTitle.html( initialText.substring(0, n) + '<i class="fas fa-square blinking"></i>' );
+    n++;
+    if (n > cycles) {
+      clearInterval(interval);
+    }
+  }, typingSpeed);
+  
 
 
   // --------------------------------------------------------------------------------
@@ -52,20 +70,15 @@ module.exports = function ParallaxConstructor() {
 
   // mouse control on page
   this.mouseDownHandler = (event) => {
-    console.log(':: mousedown');
-    
     this.startX = event.clientX;
-    let leftStr = this.slidesContainer.style.left || '0px';
+    let leftStr = this.$slidesContainer.css('left') || '0px';
     let left = parseInt(leftStr.substring(0, leftStr.length - 2));
     this.startOffset = left;
-    
     window.onmousemove = this.mouseMoveHandler;
     window.onmouseup = this.mouseUpHandler;
-    // this.$slidesContainer.addClass('notransition');
   }
 
   this.mouseMoveHandler = (event) => {
-    console.log(':: mousemove');
     let offset = event.clientX - this.startX;
     let newOffset = this.startOffset + offset/2;
     // this.slidesContainer.style.left = newOffset + 'px';
@@ -81,7 +94,6 @@ module.exports = function ParallaxConstructor() {
   }
 
   this.mouseUpHandler = (event) => {
-    console.log(':: mouseup');
     this.setSlide(this.currentSlide, 600);
     window.onmousemove = null;
     window.onmouseup = null;

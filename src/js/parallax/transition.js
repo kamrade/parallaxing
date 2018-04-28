@@ -42,13 +42,15 @@ module.exports = function transitions(ParallaxConstructor) {
     
     if (slide > 0 && slide < (this.slidesCount + 1)) {
 
-      $(this.slides).each(slide => $(slide).removeClass('active'));
-      $(this.slides[slide - 1]).addClass('active');
+      this.$slides.each((index, slide) => {
+        $(slide).removeClass('active');
+      });
+      this.$slides.eq(slide - 1).addClass('active');
 
       this.currentSlide  = slide;
       this.currentOffset = -1 * (this.currentSlide - 1) * this.stepWidth;
 
-      TweenLite.to(this.slidesContainer, 1.3, { x: this.currentOffset });
+      TweenLite.to(this.$slidesContainer, 1.3, { x: this.currentOffset });
     }
   }
 

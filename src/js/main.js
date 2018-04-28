@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 console.log(':: start');
 
 let ParallaxConstructor = require('./parallax/constructor');
@@ -10,8 +12,8 @@ function Parallax() {
 }
 
 function hidePreloader() {
-  let preloader = document.querySelector('.preloader');
-  preloader.style.display = 'none';
+  let $preloader = $('.preloader');
+  $preloader.hide();
 }
 
 window.onload = () => {
