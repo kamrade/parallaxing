@@ -1,4 +1,5 @@
-let $ = require('jquery');
+import { TweenLite } from "gsap";
+import $ from 'jquery';
 
 module.exports = function transitions(ParallaxConstructor) {
 
@@ -41,18 +42,13 @@ module.exports = function transitions(ParallaxConstructor) {
     
     if (slide > 0 && slide < (this.slidesCount + 1)) {
 
-      this.$slidesContainer.stop();
-
-      // set class 'active' to active slide
-      this.slides.forEach(slide => slide.classList.remove('active'));
-      this.slides[slide - 1].classList.add('active');
+      $(this.slides).each(slide => $(slide).removeClass('active'));
+      $(this.slides[slide - 1]).addClass('active');
 
       this.currentSlide  = slide;
       this.currentOffset = -1 * (this.currentSlide - 1) * this.stepWidth;
-      
-      this.$slidesContainer.animate({
-        left: `${this.currentOffset}px`
-      }, transitionDuration);
+
+      TweenLite.to(this.slidesContainer, 1.3, { x: this.currentOffset });
     }
   }
 

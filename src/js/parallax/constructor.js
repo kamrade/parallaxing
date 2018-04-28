@@ -1,12 +1,10 @@
 var throttle = require('throttle-debounce/throttle');
-let $ = require('jquery');
 const options = require('./options');
 
 module.exports = function ParallaxConstructor() {
 
   // cashe dom
   this.slidesContainer    = document.querySelector('.slides-container');
-  this.$slidesContainer   = $(this.slidesContainer)
   this.slides             = document.querySelectorAll('.slide');
   this.windowWidth        = window.innerWidth;
   this.windowHeight       = window.innerHeight;
@@ -31,9 +29,6 @@ module.exports = function ParallaxConstructor() {
   // init active class
   this.slides[this.currentSlide - 1].classList.add('active');
 
-  // this.slides.forEach(slide => slide.style.height = that.windowHeight);
-  // console.log(that.windowHeight);
-
 
   // --------------------------------------------------------------------------------
   // event handlers
@@ -55,26 +50,31 @@ module.exports = function ParallaxConstructor() {
 
   }
 
+  // mouse control on page
   this.mouseDownHandler = (event) => {
     console.log(':: mousedown');
+    
     this.startX = event.clientX;
     let leftStr = this.slidesContainer.style.left || '0px';
     let left = parseInt(leftStr.substring(0, leftStr.length - 2));
     this.startOffset = left;
+    
     window.onmousemove = this.mouseMoveHandler;
     window.onmouseup = this.mouseUpHandler;
+    // this.$slidesContainer.addClass('notransition');
   }
 
   this.mouseMoveHandler = (event) => {
     console.log(':: mousemove');
     let offset = event.clientX - this.startX;
     let newOffset = this.startOffset + offset/2;
-    this.slidesContainer.style.left = newOffset + 'px';
+    // this.slidesContainer.style.left = newOffset + 'px';
+    // this.slidesContainer.style.transform = `translateX(${newOffset}px)`;
 
-    if (offset > this.windowWidth / 4) {
+    if (offset > 200) {
       window.onmousemove = null;
       this.setPrevSlide();
-    } else if (offset < -1 * this.windowWidth / 4) {
+    } else if (offset < -200) {
       window.onmousemove = null;
       this.setNextSlide();
     }
