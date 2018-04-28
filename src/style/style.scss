@@ -2,11 +2,9 @@
 
 @import "./bootstrap/bootstrap";
 @import "./base/open-iconic";
+
 @import "./modules/main";
 @import "./modules/slides";
-@import "./modules/slide-parallaxors";
 @import "./modules/slide-toggler";
 
-body {
-  font-family: 'Space Mono', monospace;
-}
+

@@ -35,3 +35,6 @@
   * 'npm install'
   * 'npm start' or 'gulp' for development
   * 'npm run build' or 'gulp build' for build project. Build You can find in dist folder.
+
+### Issues.
+  * Sometimes img:dev task takes tonns of time. Sorry.

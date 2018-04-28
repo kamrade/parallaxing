@@ -1,12 +1,12 @@
-let d3 = require('d3');
-let _ = require('lodash');
+var throttle = require('throttle-debounce/throttle');
+let $ = require('jquery');
 const options = require('./options');
 
 module.exports = function ParallaxConstructor() {
 
   // cashe dom
   this.slidesContainer    = document.querySelector('.slides-container');
-  this.d3SlidesContainer  = d3.select(this.slidesContainer);
+  this.$slidesContainer   = $(this.slidesContainer)
   this.slides             = document.querySelectorAll('.slide');
   this.windowWidth        = window.innerWidth;
   this.windowHeight       = window.innerHeight;
@@ -37,7 +37,7 @@ module.exports = function ParallaxConstructor() {
 
   // --------------------------------------------------------------------------------
   // event handlers
-  window.onresize = _.throttle(this.updateSize.bind(this), this.throttlingInterval);
+  window.onresize = throttle(this.throttlingInterval, this.updateSize.bind(this));
 
   window.onwheel = (event) => {
     event.preventDefault();
@@ -54,5 +54,40 @@ module.exports = function ParallaxConstructor() {
     }
 
   }
+
+  this.mouseDownHandler = (event) => {
+    console.log(':: mousedown');
+    this.startX = event.clientX;
+    let leftStr = this.slidesContainer.style.left || '0px';
+    let left = parseInt(leftStr.substring(0, leftStr.length - 2));
+    this.startOffset = left;
+    window.onmousemove = this.mouseMoveHandler;
+    window.onmouseup = this.mouseUpHandler;
+  }
+
+  this.mouseMoveHandler = (event) => {
+    console.log(':: mousemove');
+    let offset = event.clientX - this.startX;
+    let newOffset = this.startOffset + offset/2;
+    this.slidesContainer.style.left = newOffset + 'px';
+
+    if (offset > this.windowWidth / 4) {
+      window.onmousemove = null;
+      this.setPrevSlide();
+    } else if (offset < -1 * this.windowWidth / 4) {
+      window.onmousemove = null;
+      this.setNextSlide();
+    }
+  }
+
+  this.mouseUpHandler = (event) => {
+    console.log(':: mouseup');
+    this.setSlide(this.currentSlide, 600);
+    window.onmousemove = null;
+    window.onmouseup = null;
+  }
+
+  window.onmousedown = this.mouseDownHandler;
+  
 
 }
