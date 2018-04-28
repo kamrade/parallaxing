@@ -1,0 +1,45 @@
+.welcome-container
+  position: absolute
+  height: 100%
+  width: 100%
+  z-index: 2
+  top: 0
+  left: 0
+
+  .welcome-block
+    position: relative
+    top: 50%
+    transform: translateY(-50%)
+    margin-left: 4rem
+    background-color: $accent
+    padding: 2rem
+    min-width: 200%
+
+
+    .welcome-title
+      font-size: 2rem
+      text-transform: uppercase
+      font-weight: 600
+      letter-spacing: 4px
+    .welcome-text
+
+    .slide-control
+      width: 3rem
+      height: 3rem
+      padding: .25rem
+      text-align: center
+      line-height: 2.5rem
+      background-color: $white
+      position: absolute
+      cursor: pointer
+      transition: all .5s ease-in-out
+      &:hover
+        background-color: $primary
+
+      &.prev-slide
+        top: 100%
+        left: 100%
+
+      &.next-slide
+        top: calc(100% - 3rem)
+        left: calc(100% + 3rem)

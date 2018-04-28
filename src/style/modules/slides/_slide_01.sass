@@ -1,10 +1,15 @@
+@import 'slide_01/animated-block'
+@import 'slide_01/animated-text'
+@import 'slide_01/welcome-container'
+@import 'slide_01/social-networking'
+
 .slide-01
   .sidebar
     padding-top: 2rem
     padding-left: 2rem
     position: relative
     height: 100%
-    
+
     .menu-toggler
       position: absolute
       z-index: 99
@@ -16,7 +21,7 @@
       transition: all .75s ease-in-out
       &:hover
         background-color: darken($accent, 4%)
-    
+
     .title
       font-size: 1rem
       text-transform: uppercase
@@ -35,76 +40,6 @@
     background-attachment: fixed
     transition: all 1.5s ease-in-out
 
-  .animated-text
-    padding: 1rem
-    background-color: $dark
-    color: $white
-    position: absolute
-    right: 420px
-    bottom: 120px
-    transition: transform 1.25s ease-in-out
-    transform: translateX(-400px)
-
-  .animated-block
-    background-color: transparent
-    border: 1px solid $primary
-    color: $gray-900
-    position: absolute
-    left: 200px
-    bottom: 120px
-    transition: transform 1s .5s ease-in-out
-    transform: translateX(-50%)
-    &::before
-      content: ''
-      position: absolute
-      z-index: 3
-      display: block
-      top: -0.25rem
-      left: -0.25rem
-      width: .5rem
-      height: .5rem
-      border: 1px solid $primary
-      background-color: $white
-    &::after
-      content: ''
-      position: absolute
-      z-index: 3
-      display: block
-      bottom: -0.25rem
-      left: -0.25rem
-      width: .5rem
-      height: .5rem
-      border: 1px solid $primary
-      background-color: $white
-
-    .ps-block-inner
-      position: relative
-      padding: 0.5rem
-      &::before
-        content: ''
-        position: absolute
-        z-index: 3
-        display: block
-        top: -0.25rem
-        right: -0.25rem
-        width: .5rem
-        height: .5rem
-        border: 1px solid $primary
-        background-color: $white
-      &::after
-        content: ''
-        position: absolute
-        z-index: 3
-        display: block
-        bottom: -0.25rem
-        right: -0.25rem
-        width: .5rem
-        height: .5rem
-        border: 1px solid $primary
-        background-color: $white
-
-
-
   &.active
     .animated-block
       transform: translateX(0px)
@@ -114,55 +49,3 @@
       background-position: 0% 50%
     .social-networking
       bottom: 0
-
-.social-networking
-  position: absolute
-  bottom: -4rem
-  transition: .5s 1s ease-in-out
-  left: 4rem
-
-.welcome-container
-  position: absolute
-  height: 100%
-  width: 100%
-  z-index: 2
-  top: 0
-  left: 0
-
-  .welcome-block
-    position: relative
-    top: 50%
-    transform: translateY(-50%)
-    margin-left: 4rem
-    background-color: $accent
-    padding: 2rem
-    min-width: 200%
-    
-
-    .welcome-title
-      font-size: 2rem
-      text-transform: uppercase
-      font-weight: 600
-      letter-spacing: 4px
-    .welcome-text
-
-    .slide-control
-      width: 3rem
-      height: 3rem
-      padding: .25rem
-      text-align: center
-      line-height: 2.5rem
-      background-color: $white
-      position: absolute
-      cursor: pointer
-      transition: all .5s ease-in-out
-      &:hover
-        background-color: $primary
-
-      &.prev-slide
-        top: 100%
-        left: 100%
-
-      &.next-slide
-        top: calc(100% - 3rem)
-        left: calc(100% + 3rem)

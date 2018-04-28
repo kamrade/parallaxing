@@ -1,0 +1,67 @@
+.slide-01
+  .animated-block
+    background-color: transparent
+    border: 1px solid $primary
+    color: $gray-900
+    position: absolute
+    left: 400px
+    bottom: 80px
+    transition: transform 1s .5s ease-in-out
+    transform: translateX(-20px)
+
+    &::before
+      content: ''
+      position: absolute
+      z-index: 3
+      display: block
+      top: -0.25rem
+      left: -0.25rem
+      width: .5rem
+      height: .5rem
+      border: 1px solid $primary
+      background-color: $white
+
+    &::after
+      content: ''
+      position: absolute
+      z-index: 3
+      display: block
+      bottom: -0.25rem
+      left: -0.25rem
+      width: .5rem
+      height: .5rem
+      border: 1px solid $primary
+      background-color: $white
+
+    .ps-block-inner
+      position: relative
+      padding: 0.5rem
+
+      &::before
+        content: ''
+        position: absolute
+        z-index: 3
+        display: block
+        top: -0.25rem
+        right: -0.25rem
+        width: .5rem
+        height: .5rem
+        border: 1px solid $primary
+        background-color: $white
+      &::after
+        content: ''
+        position: absolute
+        z-index: 3
+        display: block
+        bottom: -0.25rem
+        right: -0.25rem
+        width: .5rem
+        height: .5rem
+        border: 1px solid $primary
+        background-color: $white
+
+      .ps-block-text
+        padding: .25rem 1rem
+        background-color: rgba($primary, 0.8)
+        color: $white
+        font-weight: bold
