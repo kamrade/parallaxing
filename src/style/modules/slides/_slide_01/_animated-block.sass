@@ -1,0 +1,61 @@
+.animated-block
+  background-color: transparent
+  border: 1px solid $primary
+  color: $gray-900
+  position: absolute
+  left: 200px
+  bottom: 120px
+  transition: transform 1s .5s ease-in-out
+  transform: translateX(-50%)
+  
+  &::before
+    content: ''
+    position: absolute
+    z-index: 3
+    display: block
+    top: -0.25rem
+    left: -0.25rem
+    width: .5rem
+    height: .5rem
+    border: 1px solid $primary
+    background-color: $white
+  
+  &::after
+    content: ''
+    position: absolute
+    z-index: 3
+    display: block
+    bottom: -0.25rem
+    left: -0.25rem
+    width: .5rem
+    height: .5rem
+    border: 1px solid $primary
+    background-color: $white
+
+  .ps-block-inner
+    position: relative
+    padding: 0.5rem
+    
+    &::before
+      content: ''
+      position: absolute
+      z-index: 3
+      display: block
+      top: -0.25rem
+      right: -0.25rem
+      width: .5rem
+      height: .5rem
+      border: 1px solid $primary
+      background-color: $white
+    
+    &::after
+      content: ''
+      position: absolute
+      z-index: 3
+      display: block
+      bottom: -0.25rem
+      right: -0.25rem
+      width: .5rem
+      height: .5rem
+      border: 1px solid $primary
+      background-color: $white
