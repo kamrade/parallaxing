@@ -31,13 +31,13 @@ module.exports = function ParallaxConstructor() {
   // init active class
   this.$slides.eq(this.currentSlide - 1).addClass('active');
 
-  // playground
+  // playground 1
   let $welcomeTitle = $('.welcome-title');
   let n = 1;
   let initialText = $welcomeTitle.text();
   let typingSpeed = 120;
   let cycles = initialText.length;
-  
+
   let interval = setInterval(function() {
     $welcomeTitle.html( initialText.substring(0, n) + '<i class="fas fa-square blinking"></i>' );
     n++;
@@ -45,7 +45,23 @@ module.exports = function ParallaxConstructor() {
       clearInterval(interval);
     }
   }, typingSpeed);
-  
+
+  // playground 2
+  // let $animatedText = $('.animated-text');
+  // let text_for_animate = $animatedText.text();
+  // console.log(text_for_animate);
+  let $menuToggler = $('.menu-toggler');
+  let $mainMenu = $('.main-menu');
+  let $menuClose = $('.menu-close-button');
+  $menuToggler.on('click', function() {
+    $mainMenu.fadeIn();
+  });
+  $menuClose.on('click', function() {
+    $mainMenu.fadeOut();
+  });
+
+
+
 
 
   // --------------------------------------------------------------------------------
@@ -100,6 +116,6 @@ module.exports = function ParallaxConstructor() {
   }
 
   window.onmousedown = this.mouseDownHandler;
-  
+
 
 }
