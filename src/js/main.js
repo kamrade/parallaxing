@@ -4,19 +4,11 @@ console.log(':: start');
 
 let ParallaxConstructor = require('./parallax/constructor');
 ParallaxConstructor = require('./parallax/helpers')(ParallaxConstructor);
+ParallaxConstructor = require('./parallax/_event-handlers')(ParallaxConstructor);
 ParallaxConstructor = require('./parallax/transition')(ParallaxConstructor);
-
-function Parallax() {
-  let parallax = new ParallaxConstructor();
-  return parallax;
-}
-
-function hidePreloader() {
-  let $preloader = $('.preloader');
-  $preloader.hide();
-}
+ParallaxConstructor = require('./parallax/lifecycle')(ParallaxConstructor);
 
 window.onload = () => {
-  hidePreloader();
-  window.prlx = Parallax();
-}
+  $('.preloader').hide();
+  window.prlx = new ParallaxConstructor();
+};

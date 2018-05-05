@@ -5,11 +5,11 @@ const options = require('./options');
 module.exports = function ParallaxConstructor() {
 
   // cashe dom
-  this.$slidesContainer   = $('.slides-container');
-  this.$slides            = $('.slide');
-  let $window             = $(window);
-  this.windowWidth        = $window.width();
-  this.windowHeight       = $window.height();
+  this.$slidesContainer = $('.slides-container');
+  this.$slides = $('.slide');
+  let $window = $(window);
+  this.windowWidth = $window.width();
+  this.windowHeight = $window.height();
 
   // init
   this.easingDown         = false;
@@ -31,60 +31,18 @@ module.exports = function ParallaxConstructor() {
   // init active class
   this.$slides.eq(this.currentSlide - 1).addClass('active');
 
-  // playground 1
-  let $welcomeTitle = $('.welcome-title');
-  let n = 1;
-  let initialText = $welcomeTitle.text();
-  let typingSpeed = 120;
-  let cycles = initialText.length;
-
-  let interval = setInterval(function() {
-    $welcomeTitle.html( initialText.substring(0, n) + '<i class="fas fa-square blinking"></i>' );
-    n++;
-    if (n > cycles) {
-      clearInterval(interval);
-    }
-  }, typingSpeed);
-
-  // playground 2
-  // let $animatedText = $('.animated-text');
-  // let text_for_animate = $animatedText.text();
-  // console.log(text_for_animate);
-  let $menuToggler = $('.menu-toggler');
-  let $mainMenu = $('.main-menu');
-  let $menuClose = $('.menu-close-button');
-  $menuToggler.on('click', function() {
-    $mainMenu.fadeIn();
-  });
-  $menuClose.on('click', function() {
-    $mainMenu.fadeOut();
-  });
-
-
-
-
-
   // --------------------------------------------------------------------------------
   // event handlers
   window.onresize = throttle(this.throttlingInterval, this.updateSize.bind(this));
 
-  window.onwheel = (event) => {
-    event.preventDefault();
+  window.onwheel = this.onWheelHandler.bind(this);
 
-    if (event.deltaY < 0) {
-      if (!this.easingUp) {
-        this.transition('easingUp');
-      }
-    }
-    if (event.deltaY > 0) {
-      if (!this.easingDown) {
-        this.transition('easingDown');
-      }
-    }
 
-  }
 
+  // -----------------------------------------------------------
   // mouse control on page
+  // TODO: make everything correct
+
   this.mouseDownHandler = (event) => {
     this.startX = event.clientX;
     let leftStr = this.$slidesContainer.css('left') || '0px';
@@ -97,8 +55,6 @@ module.exports = function ParallaxConstructor() {
   this.mouseMoveHandler = (event) => {
     let offset = event.clientX - this.startX;
     let newOffset = this.startOffset + offset/2;
-    // this.slidesContainer.style.left = newOffset + 'px';
-    // this.slidesContainer.style.transform = `translateX(${newOffset}px)`;
 
     if (offset > 200) {
       window.onmousemove = null;
@@ -116,6 +72,5 @@ module.exports = function ParallaxConstructor() {
   }
 
   window.onmousedown = this.mouseDownHandler;
-
 
 }
