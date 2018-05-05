@@ -1,4 +1,4 @@
 module.exports = {
-  transitionDuration: 1200,
+  slideTransitionDuration: 1.2,
   throttlingInterval: 500
 };

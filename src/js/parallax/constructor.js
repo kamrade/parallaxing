@@ -14,7 +14,7 @@ module.exports = function ParallaxConstructor() {
   // init
   this.easingDown         = false;
   this.easingUp           = false;
-  this.transitionDuration = options.transitionDuration;
+  this.slideTransitionDuration = options.slideTransitionDuration;
   this.throttlingInterval = options.throttlingInterval;
   this.currentOffset      = 0;
   this.currentSlide       = 1;
@@ -22,8 +22,8 @@ module.exports = function ParallaxConstructor() {
 
   // calc values
   this.slidesCount        = this.$slides.length;
-  this.slidesWidth        = this.slidesCount * this.windowWidth;
-  this.maxOffset          = (this.slidesCount - 1) * this.windowWidth;
+  this.slidesWidth        = this.slidesCount * this.stepWidth;
+  this.maxOffset          = (this.slidesCount - 1) * this.stepWidth;
 
   // setup
   this.$slidesContainer.width(`${this.slidesWidth}px`);

@@ -20,7 +20,7 @@ module.exports = function transitions(ParallaxConstructor) {
     this[easing] = true;
     setTimeout(() => {
       this[easing] = false;
-    }, this.transitionDuration * 1.2);
+    }, this.slideTransitionDuration * 1200);
 
   }
 
@@ -38,7 +38,7 @@ module.exports = function transitions(ParallaxConstructor) {
 
   ParallaxConstructor.prototype.setSlide = function setSlide(slide, duration) {
 
-    let transitionDuration = duration || this.transitionDuration;
+    let slideTransitionDuration = duration || this.slideTransitionDuration;
 
     if (slide > 0 && slide < (this.slidesCount + 1)) {
 
@@ -52,7 +52,7 @@ module.exports = function transitions(ParallaxConstructor) {
       this.currentSlide  = slide;
       this.currentOffset = -1 * (this.currentSlide - 1) * this.stepWidth;
 
-      TweenLite.to(this.$slidesContainer, 1.3, { x: this.currentOffset });
+      TweenLite.to(this.$slidesContainer, slideTransitionDuration, { x: this.currentOffset });
 
       this.slideHasBeenChanged();
     }
