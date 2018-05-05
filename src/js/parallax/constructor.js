@@ -1,6 +1,6 @@
 var throttle = require('throttle-debounce/throttle');
 import $ from 'jquery';
-const options = require('./options');
+const options = require('./_options');
 
 module.exports = function ParallaxConstructor() {
 
@@ -27,16 +27,12 @@ module.exports = function ParallaxConstructor() {
 
   // setup
   this.$slidesContainer.width(`${this.slidesWidth}px`);
-
-  // init active class
   this.$slides.eq(this.currentSlide - 1).addClass('active');
 
   // --------------------------------------------------------------------------------
   // event handlers
   window.onresize = throttle(this.throttlingInterval, this.updateSize.bind(this));
-
   window.onwheel = this.onWheelHandler.bind(this);
-
 
 
   // -----------------------------------------------------------
@@ -66,7 +62,6 @@ module.exports = function ParallaxConstructor() {
   }
 
   this.mouseUpHandler = (event) => {
-    this.setSlide(this.currentSlide, 600);
     window.onmousemove = null;
     window.onmouseup = null;
   }

@@ -3,10 +3,10 @@ import $ from 'jquery';
 console.log(':: start');
 
 let ParallaxConstructor = require('./parallax/constructor');
-ParallaxConstructor = require('./parallax/helpers')(ParallaxConstructor);
+ParallaxConstructor = require('./parallax/_helpers')(ParallaxConstructor);
 ParallaxConstructor = require('./parallax/_event-handlers')(ParallaxConstructor);
-ParallaxConstructor = require('./parallax/transition')(ParallaxConstructor);
-ParallaxConstructor = require('./parallax/lifecycle')(ParallaxConstructor);
+ParallaxConstructor = require('./parallax/_transition')(ParallaxConstructor);
+ParallaxConstructor = require('./parallax/_lifecycle')(ParallaxConstructor);
 
 window.onload = () => {
   $('.preloader').hide();
