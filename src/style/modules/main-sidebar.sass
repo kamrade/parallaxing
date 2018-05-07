@@ -1,0 +1,29 @@
+.main-sidebar
+  height: 100vh
+  background-color: $accent
+  width: 128px
+  position: fixed
+  top: 0
+  left: 0
+  z-index: $zindex-sticky
+  padding-top: 2rem
+  padding-left: 2rem
+
+  .title
+    font-size: 1rem
+    text-transform: uppercase
+    letter-spacing: 2px
+    font-weight: 600
+
+  .menu-toggler
+    position: absolute
+    z-index: 99
+    left: 1rem
+    top: 50%
+    transform: translateY(-50%)
+    cursor: pointer
+    padding: .5rem .75rem
+    border: 2px solid $gray-800
+    transition: all .75s ease-in-out
+    &:hover
+      background-color: darken($accent, 4%)
