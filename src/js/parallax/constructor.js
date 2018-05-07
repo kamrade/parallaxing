@@ -5,11 +5,16 @@ const options = require('./_options');
 module.exports = function ParallaxConstructor() {
 
   // cashe dom
+  this.$showMenuBtn = $('.menu-toggler');
+  this.$menu = $('.main-menu');
+  this.$btnClose = $('.btn-close');
   this.$slidesContainer = $('.slides-container');
   this.$slides = $('.slide');
   let $window = $(window);
   this.windowWidth = $window.width();
   this.windowHeight = $window.height();
+  let self = this;
+
 
   // init
   this.easingDown         = false;
@@ -34,38 +39,17 @@ module.exports = function ParallaxConstructor() {
   window.onresize = throttle(this.throttlingInterval, this.updateSize.bind(this));
   window.onwheel = this.onWheelHandler.bind(this);
 
-
   // -----------------------------------------------------------
   // mouse control on page
-  // TODO: make everything correct
+  window.onmousedown = this.mouseDownHandler.bind(this);
 
-  this.mouseDownHandler = (event) => {
-    this.startX = event.clientX;
-    let leftStr = this.$slidesContainer.css('left') || '0px';
-    let left = parseInt(leftStr.substring(0, leftStr.length - 2));
-    this.startOffset = left;
-    window.onmousemove = this.mouseMoveHandler;
-    window.onmouseup = this.mouseUpHandler;
-  }
+  this.$showMenuBtn.on('click', function (event) {
+    self.$menu.addClass('active');
+    self.$menu.fadeIn();
+  });
 
-  this.mouseMoveHandler = (event) => {
-    let offset = event.clientX - this.startX;
-    let newOffset = this.startOffset + offset/2;
-
-    if (offset > 200) {
-      window.onmousemove = null;
-      this.setPrevSlide();
-    } else if (offset < -200) {
-      window.onmousemove = null;
-      this.setNextSlide();
-    }
-  }
-
-  this.mouseUpHandler = (event) => {
-    window.onmousemove = null;
-    window.onmouseup = null;
-  }
-
-  window.onmousedown = this.mouseDownHandler;
-
+  this.$btnClose.on('click', function (event) {
+    self.$menu.removeClass('active');
+    self.$menu.fadeOut();
+  });
 }
