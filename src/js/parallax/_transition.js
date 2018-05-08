@@ -36,6 +36,11 @@ module.exports = function transitions(ParallaxConstructor) {
     }
   }
 
+  ParallaxConstructor.prototype.updateSlidesContainerOffset = function updateSlidesContainerOffset() {
+    this.currentOffset = -1 * (this.currentSlide - 1) * this.stepWidth;
+    TweenLite.to(this.$slidesContainer, this.slideTransitionDuration, { x: this.currentOffset });
+  };
+
   ParallaxConstructor.prototype.setSlide = function setSlide(slide, duration) {
 
     let slideTransitionDuration = duration || this.slideTransitionDuration;

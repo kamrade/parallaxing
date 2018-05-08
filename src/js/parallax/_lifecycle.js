@@ -8,14 +8,12 @@ module.exports = function(ParallaxConstructor) {
 
     switch(this.currentSlide) {
       case 1:
-        console.log(':: out of 1');
         this.slide_01_Destructor();
         break;
       case 2:
-        console.log(':: out of 2');
         break;
       default:
-        console.log('out of default');
+        break;
     }
 
   }
@@ -24,14 +22,12 @@ module.exports = function(ParallaxConstructor) {
 
     switch(this.currentSlide) {
       case 1:
-        console.log(':: in to 1');
         this.slide_01_Constructor();
         break;
       case 2:
-        console.log(':: in to 2');
         break;
       default:
-        console.log(':: in to default');
+        break;
     }
 
   }
@@ -75,7 +71,6 @@ module.exports = function(ParallaxConstructor) {
   }
 
   ParallaxConstructor.prototype.slide_01_Destructor = function slide_01_Destructor() {
-    console.log(':: slide 01 destructor');
   }
 
   return ParallaxConstructor;

@@ -28,7 +28,6 @@ let SplitText = function SplitText(selector) {
   this.$el.html(newText);
   this.chars = this.$el.find(".dx-char");
 
-  console.log(this);
 };
 
 SplitText.prototype.getVersion = function getVersion() {
