@@ -3,14 +3,8 @@ extend layouts/main
 block content
   
   main.main
-    
-    .main-sidebar
-      h3.title Dexa Studio
-      .menu-toggler
-        span.oi(data-glyph="menu")
-    
+    include ./modules/main-sidebar.html
     include ./modules/slides.pug
-    include ./modules/slide-toggler.html
     
   include ./modules/preloader.html
   include ./modules/menu/menu.pug

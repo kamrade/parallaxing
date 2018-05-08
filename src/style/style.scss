@@ -1,13 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Space+Mono:400,400i,700,700i');
 
 @import "./bootstrap/bootstrap";
-@import "./base/open-iconic";
-@import "./base/animations";
-
-
-@import "./modules/main";
-@import "./modules/menu";
-@import "./modules/slides";
-@import "./modules/slide-toggler";
-@import "./modules/shared/close-button";
-@import "./modules/main-sidebar";
+@import "./base/index";
+@import "./modules/index";

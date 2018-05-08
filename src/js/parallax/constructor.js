@@ -5,7 +5,10 @@ const options = require('./_options');
 module.exports = function ParallaxConstructor() {
 
   // cashe dom
+  this.$main = $('.app > .main');
   this.$showMenuBtn = $('.menu-toggler');
+  this.$sidebar = $('.main-sidebar');
+  this.$toggleSlide = this.$sidebar.find('.toggle-slide');
   this.$menu = $('.main-menu');
   this.$btnClose = $('.btn-close');
   this.$slidesContainer = $('.slides-container');
@@ -33,6 +36,7 @@ module.exports = function ParallaxConstructor() {
   // setup
   this.$slidesContainer.width(`${this.slidesWidth}px`);
   this.$slides.eq(this.currentSlide - 1).addClass('active');
+  this.$main.height(this.windowHeight);
 
   // --------------------------------------------------------------------------------
   // event handlers

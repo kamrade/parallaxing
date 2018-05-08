@@ -55,6 +55,9 @@ module.exports = function transitions(ParallaxConstructor) {
       TweenLite.to(this.$slidesContainer, slideTransitionDuration, { x: this.currentOffset });
 
       this.slideHasBeenChanged();
+
+      this.$toggleSlide.removeClass('active');
+      this.$toggleSlide.eq(this.currentSlide - 1).addClass('active');
     }
   }
 

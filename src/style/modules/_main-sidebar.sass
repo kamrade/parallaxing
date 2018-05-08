@@ -1,0 +1,64 @@
+.main-sidebar
+  height: 100%
+  background-color: $accent
+  width: 80px
+  position: fixed
+  top: 0
+  left: 0
+  z-index: $zindex-sticky
+  padding-top: 1rem
+  padding-left: 1rem
+  border-right: 1px solid darken($accent, 4%)
+
+  .title
+    font-size: 1rem
+    text-transform: uppercase
+    letter-spacing: 2px
+    font-weight: 600
+    padding-top: .25rem
+    transform: rotate(-90deg) translateX(-125%)
+    transform-origin: 0 0
+
+
+  .slides-toggler
+    margin-top: 4rem
+    .toggle-slide
+      display: block
+      width: .75rem
+      height: .75rem
+      background-color: darken($accent, 2%)
+      border: 2px solid darken($accent, 4%)
+      border-radius: 50%
+      margin: 1.125rem
+      cursor: pointer
+      transition: background-color .25s ease-in-out
+      &:hover
+        background-color: lighten($accent, 2%)
+      &.active
+        border-color: $white
+
+  .menu-toggler
+    position: absolute
+    z-index: 99
+    left: 1rem
+    top: 50%
+    transform: translateY(-50%)
+    cursor: pointer
+    padding: .625rem .875rem
+    border: 2px solid $gray-800
+    transition: all .75s ease-in-out
+    &:hover
+      background-color: darken($accent, 4%)
+
+  .social
+    position: absolute
+    bottom: 1rem
+    left: 1rem
+    .fab
+      display: block
+      padding: 1rem
+      width: 3rem
+      cursor: pointer
+      border-radius: $border-radius
+      &:hover
+        background-color: rgba(0,0,0,0.04)
