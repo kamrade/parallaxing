@@ -55,5 +55,15 @@ module.exports = function(ParallaxConstructor) {
     window.onmouseup = null;
   }
 
+  ParallaxConstructor.prototype.globalKeyDownHandler = function globalKeyDownHandler(event) {
+    if (event.keyCode === 39) {
+      this.setNextSlide();
+    } else  if (event.keyCode === 37) {
+      this.setPrevSlide();
+    }
+  }
+
+
+
   return ParallaxConstructor;
 }

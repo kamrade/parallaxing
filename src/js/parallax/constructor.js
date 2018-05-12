@@ -47,6 +47,8 @@ module.exports = function ParallaxConstructor() {
   // mouse control on page
   window.onmousedown = this.mouseDownHandler.bind(this);
 
+  window.onkeydown = this.globalKeyDownHandler.bind(this);
+
   this.$showMenuBtn.on('click', function (event) {
     self.$menu.addClass('active');
     self.$menu.fadeIn();
