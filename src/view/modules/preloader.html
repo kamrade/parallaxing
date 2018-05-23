@@ -5,18 +5,30 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: white;
+    background-color: #292A2E;
+    color: #F2CD0C;
     display: flex;
     z-index: 1100;
   }
 
   .preloader-text {
     letter-spacing: 1px;
+    font-size: 1rem;
+    line-height: 1rem;
     margin: auto;
+    text-align: center;
+  }
+
+  .preloader-row {
+    display: block;
   }
 </style>
 
 
 <div class="preloader">
-  <p class="preloader-text">PRELOADER<p>
+  <p class="preloader-text">
+    <img src="/img/logo-acc.svg" alt="">
+    <span class="preloader-row first">LO</span>
+    <span class="preloader-row second">AD</span>
+  <p>
 </div>

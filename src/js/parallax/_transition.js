@@ -43,6 +43,7 @@ module.exports = function transitions(ParallaxConstructor) {
 
   ParallaxConstructor.prototype.setSlide = function setSlide(slide, duration) {
 
+
     let slideTransitionDuration = duration || this.slideTransitionDuration;
 
     if (slide > 0 && slide < (this.slidesCount + 1)) {
@@ -64,6 +65,8 @@ module.exports = function transitions(ParallaxConstructor) {
       this.$toggleSlide.removeClass('active');
       this.$toggleSlide.eq(this.currentSlide - 1).addClass('active');
     }
+
+
   }
 
   return ParallaxConstructor;

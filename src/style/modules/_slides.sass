@@ -5,13 +5,15 @@
   transform: translateX(0px)
 
 .slide
-  height: 100vh
-  width: 100vw
   display: flex
   position: relative
+  padding-left: 5rem
+  @media(max-width: map-get($grid-breakpoints, sm))
+    padding-left: 0
 
   &.slide-01
     background-color: $accent
+    display: block
   &.slide-02
     background-color: $accent
   &.slide-03
@@ -29,255 +31,14 @@
     font-weight: 300
     color: $gray-800
 
-  .slide-content--block
-    position: absolute
-    z-index: 999
-    top: 25%
-    left: 75%
-    width: 150px
-    height: 150px
-    background-color: transparent
-    border-radius: 50%
-    transition: transform 1.5s .25s ease-in-out
+.header
+  width: 100%
+  padding: 1rem 0
 
-    .slide-content--block-img
-      max-height: 100%
-      max-width: 100%
-
-// SLIDE 01
-
-.slide-01
-  .slide-main-image
-    width: calc(100% - 2rem)
-    height: calc(100vh - 4rem)
-    position: relative
-    margin-top: 2rem
-    background-image: url('/img/screen_figma_one-dark.png')
-    background-repeat: no-repeat
-    background-position: 300px 50%
-    background-size: cover
-    background-attachment: fixed
-    transition: all 1.5s ease-in-out
-
-  .animated-text
-    padding: 1rem
-    background-color: $primary
-    color: $white
-    position: absolute
-    right: 10rem
-    bottom: 4rem
-    font-size: 10px
-    font-weight: bold
-    text-transform: uppercase
-    letter-spacing: 4px
-    transition: transform 1.25s ease-in-out
-    transform: translateX(-400px)
-
-  .animated-block
-    background-color: transparent
-    border: 1px solid $primary
-    color: $white
-    position: absolute
-    right: 200px
-    top: 4rem
-    transition: transform 1s .5s ease-in-out
-    transform: translateX(-50%)
-
-    &::before
-      content: ''
-      position: absolute
-      z-index: 3
-      display: block
-      top: -0.25rem
-      left: -0.25rem
-      width: .5rem
-      height: .5rem
-      border: 1px solid $primary
-      background-color: $white
-
-    &::after
-      content: ''
-      position: absolute
-      z-index: 3
-      display: block
-      bottom: -0.25rem
-      left: -0.25rem
-      width: .5rem
-      height: .5rem
-      border: 1px solid $primary
-      background-color: $white
-
-    .ps-block-inner
-      position: relative
-      padding: 0.5rem
-
-      &::before
-        content: ''
-        position: absolute
-        z-index: 3
-        display: block
-        top: -0.25rem
-        right: -0.25rem
-        width: .5rem
-        height: .5rem
-        border: 1px solid $primary
-        background-color: $white
-
-      &::after
-        content: ''
-        position: absolute
-        z-index: 3
-        display: block
-        bottom: -0.25rem
-        right: -0.25rem
-        width: .5rem
-        height: .5rem
-        border: 1px solid $primary
-        background-color: $white
-
-
-  .welcome-container
-    position: absolute
-    height: 100%
-    width: 200%
-    z-index: 2
-    top: 0
-    left: 0
-
-    .welcome-block
-      position: relative
-      top: 50%
-      transform: translateY(-50%)
-      margin-left: 8rem
-      background-color: $accent
-      padding: 2rem
-      min-width: 200%
-
-
-      .welcome-title
-        font-size: 2rem
-        text-transform: uppercase
-        font-weight: 600
-        letter-spacing: 4px
-      .welcome-text
-
-      .slide-control
-        width: 3rem
-        height: 3rem
-        padding: .25rem
-        text-align: center
-        line-height: 2.5rem
-        background-color: $white
-        position: absolute
-        cursor: pointer
-        transition: all .5s ease-in-out
-        &:hover
-          background-color: $primary
-
-        &.prev-slide
-          top: 100%
-          left: 100%
-
-        &.next-slide
-          top: calc(100% - 3rem)
-          left: calc(100% + 3rem)
-
-// --- SLIDE 01 + ACTIVE
-.slide-01
-  &.active
-    .animated-block
-      transform: translateX(0px)
-
-    .animated-text
-      transform: translateX(0px)
-
-    .slide-main-image
-      background-position: 0% 50%
-
-
-
-// SLIDE 02
-.slide-02
-
-  .slide-content-wrapper
-    height: 100%
-
-  .examples-block
-    background-color: $accent
-    padding: 1rem
-    min-height: 320px
-    position: relative
-
-    .examples-description
-      position: relative
-
-    .examples-description-text
-      font-size: 12px
-
-    .example-image
-      position: absolute
-      bottom: 0
-      right: 0
-      max-height: 400px
-      transition: all 2s ease-in-out
-      opacity: 0
-
-      &.example-image-01
-        right: 0
-        bottom: -50%
-
-      &.example-image-02
-        right: 32px
-        bottom: -75%
-        transition-delay: 0.25s
-
-  .top-image
-    height: 100%
-    background-color: pink
-    background-image: url('/img/james-connolly-363036-unsplash.jpg')
-    background-size: cover
-    background-position: 0% 0
-    transition: all 1.5s ease-in-out
-
-.slide-02
-  &.active
-    .top-image
-      background-position: 50% 0
-    .example-image
-      opacity: 1
-    .example-image.example-image-01
-      right: 0
-      bottom: 0
-    .example-image.example-image-02
-      right: 32px
-      bottom: -50%
-
-
-// PANELS FOR SLIDES
-.panel
-  &.panel-features
-    background-color: $gray-800
-    height: 100%
-    padding: 3rem
-    padding-left: 8rem
-
-    .panel-title
-      color: $accent
-      margin-bottom: 1.5rem
-
-    .panel-list
-      list-style: none
-      margin: 0
-      padding: 0
-
-      a
-        display: block
-        padding: .5rem 0
-        color: $white
-
-
-  .panel-description-text
-    font-size: 12px
-    color: $white
+  .menu-item-text
     margin: 0
-    padding-top: .5rem
+
+  .menu-item-number
+    font-family: $font-family-heading
+    font-weight: 900
+    margin: 0

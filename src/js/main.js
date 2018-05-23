@@ -8,7 +8,10 @@ ParallaxConstructor = require('./parallax/_event-handlers')(ParallaxConstructor)
 ParallaxConstructor = require('./parallax/_transition')(ParallaxConstructor);
 
 window.onload = () => {
-  $('.preloader').hide();
+  setTimeout(() => {
+    $('.preloader').hide();
+  }, 2000)
+
   window.prlx = new ParallaxConstructor();
   prlx.slide_01_Constructor();
 };

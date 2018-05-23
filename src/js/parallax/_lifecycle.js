@@ -43,31 +43,6 @@ module.exports = function(ParallaxConstructor) {
       scale: 0,
       visibility: 'hidden'
     }, 0.08);
-
-    // this.slide_01.welcomeText = new SplitText('.welcome-text');
-    // this.slide_01.welcomeTextTimeline = new TimelineLite();
-    //
-    // let $chars = $(this.slide_01.welcomeText.chars);
-    // $chars.sort( () => 0.5 * Math.random() );
-    //
-    // $chars.each( (index, el) => {
-    //   this.slide_01.welcomeTextTimeline.from($(el), 0.005, {
-    //     visibility: 'hidden'
-    //   }, index * 0.005);
-    // });
-
-    // let $welcomeTitle = $('.welcome-title');
-    // let self = this;
-    // this.welcomeText = this.welcomeText || $welcomeTitle.text();
-    // $welcomeTitle.text('');
-    // let demo = { textLength: 0 };
-    // let tween = TweenLite.to(demo, 1.5, {
-    //   textLength: this.welcomeText.length,
-    //   onUpdate: showScore
-    // });
-    // function showScore() {
-    //   $welcomeTitle.text(self.welcomeText.substr( 0, demo.textLength ));
-    // }
   }
 
   ParallaxConstructor.prototype.slide_01_Destructor = function slide_01_Destructor() {
