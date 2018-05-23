@@ -30,15 +30,31 @@
     font-size: 80px
     font-weight: 300
     color: $gray-800
+    font-family: $font-family-heading
 
 .header
   width: 100%
-  padding: 1rem 0
+  padding: 0 0 1rem
+
+  .header-menu-item
+    display: block
+    font-family: $font-family-heading
+    font-size: .75rem
+    color: $gray-800
+    padding: .5rem
+    border-bottom: 2px solid transparent
+    +transition($transition-base)
+    &:hover
+      border-bottom: 2px solid $gray-800
+      background-color: rgba(#000, .05)
+      text-decoration: none
 
   .menu-item-text
     margin: 0
+    text-transform: uppercase
 
   .menu-item-number
-    font-family: $font-family-heading
-    font-weight: 900
     margin: 0
+    margin-bottom: .125rem
+    font-size: 28px
+    font-family: $font-family-monospace
