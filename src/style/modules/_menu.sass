@@ -7,3 +7,18 @@
   height: 100vh
   background-color: white
   display: none
+
+  .menu-toggler
+    position: absolute
+    z-index: 99
+    left: 1rem
+    top: 50%
+    transform: translateY(-50%)
+    cursor: pointer
+    padding: .625rem .875rem
+    border: 2px solid $text-muted
+    transition: all .75s ease-in-out
+    color: $text-muted
+    &:hover
+      color: $gray-800
+      border-color: $gray-800

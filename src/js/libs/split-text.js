@@ -19,7 +19,6 @@ let SplitText = function SplitText(selector) {
       newText += `<span class="dx-char" style="position: relative; display: inline-block; transform: matrix(1,0,0,1,0,0);">${this.text[i]}</span>`;
     } else {
       newText += '</div> <div style="position: relative; display: inline-block">';
-
     }
   }
 
