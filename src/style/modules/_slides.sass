@@ -65,18 +65,75 @@
     .board-story-block
       display: flex
 
+      .animate-text
+        position: relative
+
+        >div
+          &::after
+            content: ''
+            position: absolute
+            width: 100%
+            height: 2px
+            background-color: $red
+            bottom: 0
+            left: 0
+            opacity: .1
+
       .story-text
         flex-grow: 1
+        transition: all .3s ease-in-out
 
       .button-wrapper
         margin-left: 1rem
-        border: 1px solid $gray-800
+        border: 1px solid darken($accent, 2%)
         padding: 1rem
         display: flex
+        transition: all .2s ease
+        color: $gray-800
+        position: relative
+
+        &:hover
+          background-color: darken($accent, 2%)
+
+          &::before, &::after
+            animation: blinking 600ms ease-in-out infinite
+
+          &::before
+            border-left: 2px solid rgba($red, 1)
+            border-top: 2px solid rgba($red, 1)
+
+          &::after
+            border-right: 2px solid rgba($red, 1)
+            border-bottom: 2px solid rgba($red, 1)
+
+        &::before
+          content: ''
+          display: block
+          position: absolute
+          top: 0
+          left: 0
+          width: .5rem
+          height: .5rem
+          border-left: 2px solid rgba($red, .15)
+          border-top: 2px solid rgba($red, .15)
+
+
+        &::after
+          content: ''
+          display: block
+          position: absolute
+          bottom: 0
+          right: 0
+          width: .5rem
+          height: .5rem
+          border-right: 2px solid rgba($red, .15)
+          border-bottom: 2px solid rgba($red, .15)
 
         .oi
           display: block
           margin: auto
+          position: relative
+          top: 1px
 
   .slide-label
     font-size: 12px
@@ -86,17 +143,26 @@
 
 // slide 01 parallax
 
-// .animate-text-01A
-  position: relative
-  display: inline-block
-  transition: all 2.5s ease
-  transform: translateX(200px)
+.board-story
+  transition: all 1s .5s ease-in-out
+
+  &:nth-child(1)
+    transform: translateX(400px)
+  &:nth-child(2)
+    transform: translateX(640px)
+  &:nth-child(3)
+    transform: translateX(220px)
 
 .slide-01.active
   .image-side
     background-position: 50% 50%
-  // .animate-text-01A
-    transform: translateX(0)
+  .board-story
+    &:nth-child(1)
+      transform: translateX(0px)
+    &:nth-child(2)
+      transform: translateX(0px)
+    &:nth-child(3)
+      transform: translateX(0px)
 
 // shared --------------------------------------------------
 

@@ -2,7 +2,7 @@ var throttle = require('throttle-debounce/throttle');
 import $ from 'jquery';
 const options = require('./_options');
 
-import SplitText from '../libs/split-text';
+
 
 module.exports = function ParallaxConstructor() {
 
@@ -84,42 +84,4 @@ module.exports = function ParallaxConstructor() {
     self.$menu.fadeOut();
   });
 
-  this.slide_01_Constructor = function slide_01_Constructor() {
-
-    this.slide_01 = this.slide_01 || {};
-
-    this.slide_01.animateText01A = new SplitText('.animate-text-01A');
-    this.slide_01.welcomeTitleTimeline01A = new TimelineLite();
-
-    this.slide_01.animateText01B = new SplitText('.animate-text-01B');
-    this.slide_01.welcomeTitleTimeline01B = new TimelineLite();
-
-    this.slide_01.animateText01C = new SplitText('.animate-text-01C');
-    this.slide_01.welcomeTitleTimeline01C = new TimelineLite();
-
-    // --------------
-
-    this.slide_01.animateText02A = new SplitText('.animate-text-02A');
-    this.slide_01.welcomeTitleTimeline02A = new TimelineLite();
-
-    this.slide_01.animateText02B = new SplitText('.animate-text-02B');
-    this.slide_01.welcomeTitleTimeline02B = new TimelineLite();
-
-    this.slide_01.animateText02C = new SplitText('.animate-text-02C');
-    this.slide_01.welcomeTitleTimeline02C = new TimelineLite();
-
-    this.slide_01.animateText02D = new SplitText('.animate-text-02D');
-    this.slide_01.welcomeTitleTimeline02D = new TimelineLite();
-
-    // --------------------
-
-    this.slide_01.animateText03A = new SplitText('.animate-text-03A');
-    this.slide_01.welcomeTitleTimeline03A = new TimelineLite();
-
-    this.slide_01.animateText03B = new SplitText('.animate-text-03B');
-    this.slide_01.welcomeTitleTimeline03B = new TimelineLite();
-
-  }
-
-  this.slide_01_Constructor();
 }
