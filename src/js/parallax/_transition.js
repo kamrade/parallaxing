@@ -43,11 +43,11 @@ module.exports = function transitions(ParallaxConstructor) {
 
   ParallaxConstructor.prototype.setSlide = function setSlide(slide, duration) {
 
-
     let slideTransitionDuration = duration || this.slideTransitionDuration;
 
     if (slide > 0 && slide < (this.slidesCount + 1)) {
 
+      // lifecycle
       this.slideWillChange();
 
       this.$slides.each((index, slide) => {
@@ -55,15 +55,28 @@ module.exports = function transitions(ParallaxConstructor) {
       });
       this.$slides.eq(slide - 1).addClass('active');
 
-      this.currentSlide  = slide;
-      this.currentOffset = -1 * (this.currentSlide - 1) * this.stepWidth;
+      this.currentSlide = slide;
 
-      TweenLite.to(this.$slidesContainer, slideTransitionDuration, { x: this.currentOffset });
+      if (window.innerWidth > 768 ) {
+        this.currentOffset = -1 * (this.currentSlide - 1) * this.stepWidth;
+        TweenLite.to(this.$slidesContainer, slideTransitionDuration, { x: this.currentOffset });
+      } else {
+        let self = this;
+        $('html, body').animate({
+          scrollTop: self.$slides.eq(this.currentSlide - 1).offset().top
+        }, 1000);
+      }
 
+
+      // lifecycle
       this.slideHasBeenChanged();
 
       this.$toggleSlide.removeClass('active');
       this.$toggleSlide.eq(this.currentSlide - 1).addClass('active');
+
+      this.$headerMenuItem.removeClass('active');
+      this.$headerMenuItem.eq(this.currentSlide - 1).addClass('active');
+
     }
 
 

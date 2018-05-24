@@ -27,7 +27,7 @@ $blue:    #007bff;
 $indigo:  #6610f2;
 $purple:  #6f42c1;
 $pink:    #e83e8c;
-$red:     #dc3545;
+$red:     #FA1048;
 $orange:  #fd7e14;
 
 $yellow:  #F2CD0C;
@@ -113,8 +113,27 @@ $border-radius: .125rem;
 $border-radius-lg: .375rem;
 $border-radius-sm: .25rem;
 
+// text ----------------------------------------------
 
 $font-family-sans-serif:      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 $font-family-monospace:       'Space Mono', SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 $font-family-base:            $font-family-sans-serif;
 $font-family-heading:         'Rubik', sans-serif;
+
+$font-size-base:              1rem;
+$font-size-lg:                ($font-size-base * 1.25);
+$font-size-sm:                ($font-size-base * .875);
+
+$h1-font-size:                $font-size-base * 2.5;   // 40
+$h2-font-size:                $font-size-base * 2;     // 32
+$h3-font-size:                $font-size-base * 1.75;  // 28
+$h4-font-size:                $font-size-base * 1.5;   // 24
+$h5-font-size:                $font-size-base * 1.25;  // 20
+$h6-font-size:                $font-size-base;         // 16
+
+$h1-line-height:              $font-size-base * 3;
+$h2-line-height:              $font-size-base * 2.5;
+$h3-line-height:              $font-size-base * 2;
+$h4-line-height:              $font-size-base * 1.75;
+$h5-line-height:              $font-size-base * 1.5;
+$h6-line-height:              $font-size-base * 1.25;

@@ -8,8 +8,12 @@
   display: flex
   position: relative
   padding-left: 5rem
+  padding-top: 6rem
   @media(max-width: map-get($grid-breakpoints, sm))
     padding-left: 0
+    padding-top: 0
+  @media(max-height: map-get($grid-breakpoints, sm))
+    padding-top: 0
 
   &.slide-01
     background-color: $accent
@@ -27,49 +31,117 @@
 
   .slide-content
     margin: auto
-    font-size: 80px
     font-weight: 300
     color: $gray-800
     font-family: $font-family-heading
 
-.header
-  width: 100%
-  padding: 0 1rem 1rem
+// slide_01
 
-  @media(max-width: map-get($grid-breakpoints, sm))
-    padding: 0 0 4rem
+.image-side
+  height: 100vh
+  background-image: url('/img/james-connolly-363036-unsplash.jpg')
+  background-size: cover
+  background-position: 0 0
+  transition: all 1s ease
 
-  .header-menu
-    @media(max-width: map-get($grid-breakpoints, sm))
-      display: none
+.slide-content
+  padding-top: 6rem
 
-  .header-menu-item
-    display: block
-    font-family: $font-family-heading
-    font-size: .75rem
-    color: $gray-800
-    padding: .5rem
-    border-bottom: 2px solid rgba($black, .1)
-    +transition($transition-base)
-    margin-bottom: .5rem
+  @media(max-width: map-get($grid-breakpoints, md))
+    padding-top: 4rem
 
-    &:hover
-      border-bottom: 2px solid $gray-800
-      background-color: rgba(#000, .05)
-      text-decoration: none
+  @media(max-height: 768px)
+    padding-top: 4rem
 
-  .menu-item-number
-    margin: 1rem 0 1.25rem
-    font-weight: 700
-    font-size: 16px
-    font-family: 'Oswald', sans-serif
+  @media(max-height: map-get($grid-breakpoints, sm))
+    padding-top: 2rem
 
-    @media(max-width: map-get($grid-breakpoints, md))
-      margin: 0
-      margin-top: .75rem
-      font-size: 12px
+  .board-story
+    margin-bottom: 4rem
 
-  .menu-item-text
-    margin: 0
+    @media(max-height: 768px)
+      margin-bottom: 2rem
+
+    .board-story-block
+      display: flex
+
+      .story-text
+        flex-grow: 1
+
+      .button-wrapper
+        margin-left: 1rem
+        border: 1px solid $gray-800
+        padding: 1rem
+        display: flex
+
+        .oi
+          display: block
+          margin: auto
+
+  .slide-label
     font-size: 12px
-    font-weight: 500
+    font-weight: 600
+    color: $red
+    margin-bottom: 0
+
+// slide 01 parallax
+
+// .animate-text-01A
+  position: relative
+  display: inline-block
+  transition: all 2.5s ease
+  transform: translateX(200px)
+
+.slide-01.active
+  .image-side
+    background-position: 50% 50%
+  // .animate-text-01A
+    transform: translateX(0)
+
+// shared --------------------------------------------------
+
+.dot-pattern
+  position: relative
+
+  &::after
+    content: ''
+    display: block
+    position: absolute
+    top: 0
+    left: 0
+    opacity: .1
+    height: 100%
+    width: 100%
+    background-image: url('/img/dot-pattern.png')
+
+.lines-pattern
+  position: relative
+
+  &::after
+    content: ''
+    display: block
+    position: absolute
+    top: 0
+    left: 0
+    opacity: .1
+    height: 100%
+    width: 100%
+    background-image: url('/img/lines-pattern.png')
+
+.arrow-right-slide
+  position: absolute
+  right: 0
+  top: 0
+  height: 100%
+  width: 5rem
+  background-color: $accent
+  display: flex
+  cursor: pointer
+
+  @media(max-width: map-get($grid-breakpoints, md))
+    display: none
+
+  .arrow-img
+    display: block
+    height: 48px
+    margin: auto

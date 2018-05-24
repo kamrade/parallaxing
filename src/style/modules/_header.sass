@@ -1,0 +1,59 @@
+.header
+  width: calc(100% - 80px)
+  position: fixed
+  top: 0
+  left: 5rem
+  background-color: $accent
+  border-bottom: 1px solid darken($accent, 4%)
+
+  @media(max-width: map-get($grid-breakpoints, sm))
+    width: calc(100% - 64px)
+
+  .header-menu
+    background-color: $accent
+
+    @media(max-width: map-get($grid-breakpoints, sm))
+      display: none
+
+    @media(max-height: map-get($grid-breakpoints, sm))
+      display: none
+
+  .header-menu-item
+    display: block
+    font-family: $font-family-heading
+    font-size: .75rem
+    color: $gray-800
+    padding: .5rem
+    border-bottom: 2px solid transparent
+    +transition($transition-base)
+
+    &.active
+      border-bottom: 2px solid $red
+
+      &:hover
+        border-bottom: 2px solid $red
+        background-color: rgba(#000, .03)
+        text-decoration: none
+
+    &:hover
+      border-bottom: 2px solid rgba($gray-800, .5)
+      background-color: rgba(#000, .05)
+      text-decoration: none
+
+  .menu-item-number
+    margin: 1rem 0 1.25rem
+    font-weight: 700
+    font-size: 16px
+    font-family: 'Oswald', sans-serif
+
+    @media(max-width: map-get($grid-breakpoints, lg))
+      margin: .25rem 0 .25rem
+      font-size: 12px
+
+  .menu-item-text
+    margin: 0
+    font-size: 12px
+    font-weight: 500
+
+    @media(max-width: map-get($grid-breakpoints, md))
+      display: none
