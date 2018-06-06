@@ -28,11 +28,16 @@ module.exports = function ParallaxConstructor() {
   this.currentSlide = 1;
   this.slidesCount = this.$slides.length;
 
-  this.init = function init() {
-    this.windowWidth = $window.width();
-    this.windowHeight = $window.height();
+  // при первичной загрузке при вычислении ширины окна учитывается scrollBar.
+  // обычно ширина scrollBar 16px. После использования обнуляется,
+  // потому что при resize scrollBar уже отсутствует.
+  let addon = 16;
 
-    // console.log(this.windowWidth, window.innerWidth);
+  this.init = function init() {
+
+    this.windowWidth = $window.width() + addon;
+    addon = 0;
+    this.windowHeight = $window.height();
 
     let headerHeight = $(".header").height();
 

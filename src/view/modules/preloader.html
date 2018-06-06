@@ -3,30 +3,24 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    right: 0;
+    bottom: 0;
     background-color: #292A2E;
     color: #F2CD0C;
     display: flex;
     z-index: 1100;
   }
 
-  .preloader-text {
-    letter-spacing: 1px;
-    font-size: 1rem;
-    line-height: 1rem;
-    margin: auto;
-    text-align: center;
-  }
-
-  .preloader-row {
+  .preloader-img {
     display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 </style>
 
 
 <div class="preloader">
-  <p class="preloader-text">
-    <img src="/img/preloader.svg" alt="">
-  <p>
+  <img class="preloader-img" src="/img/preloader.svg" alt="">
 </div>
