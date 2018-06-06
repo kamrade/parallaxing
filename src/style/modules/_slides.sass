@@ -71,6 +71,7 @@
         position: relative
 
         >div
+
           &::after
             content: ''
             position: absolute
@@ -79,11 +80,18 @@
             background-color: $red
             bottom: 0
             left: 0
-            opacity: .1
+            opacity: 0
 
       .story-text
+        font-family: $font-family-monospace
+        font-size: 1.25rem
         flex-grow: 1
         transition: all .3s ease-in-out
+
+        &:hover
+          .animate-text > div::after
+            opacity: 1
+            +transition($transition-base)
 
       .button-wrapper
         margin-left: 1rem

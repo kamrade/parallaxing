@@ -146,8 +146,7 @@ gulp.task('watch', function() {
   gulp.watch('./src/js/**/*.js', ['js']);
   gulp.watch('./src/style/**/*.sass', ['sass']);
   gulp.watch('./src/style/**/*.scss', ['sass']);
-  gulp.watch('./src/img/**/*.jpg', ['img:dev']);
-  gulp.watch('./src/img/**/*.png', ['img:dev']);
+  gulp.watch('./src/img/**/*', ['img:dev']);
   gulp.watch('./src/fonts/**/*', ['fonts:dev']);
 });
 
