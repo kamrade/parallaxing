@@ -41,7 +41,8 @@
 
 .image-side
   height: 100vh
-  background-image: url('/img/james-connolly-363036-unsplash.jpg')
+  // background-image: url('/img/james-connolly-363036-unsplash.jpg')
+  background-image: url('/img/01-home-bg.png')
   background-size: cover
   background-position: 0 0
   transition: all 1.5s ease-in-out
@@ -145,11 +146,31 @@
           position: relative
           top: 1px
 
-  .slide-label
-    font-size: 12px
-    font-weight: 600
-    color: $red
-    margin-bottom: 0
+.slide-label
+  font-size: 12px
+  font-family: $font-family-monospace
+  color: $red
+  margin-bottom: 0
+
+.board-story-images
+  position: relative
+
+  .image
+    height: 540px
+    transform: translateY(100%)
+    transition: all 3000ms ease-in-out
+    img
+      height: 100%
+
+  .image-1
+    position: absolute
+    top: -320px
+    right: 0
+
+  .image-2
+    position: absolute
+    top: -240px
+    right: 240px
 
 // slide 01 parallax
 
@@ -160,9 +181,11 @@
     &:nth-child(1)
       transform: translateX(400px)
     &:nth-child(2)
-      transform: translateX(640px)
+      transform: translateX(140px)
+      transition-delay: 300
     &:nth-child(3)
       transform: translateX(220px)
+      transition-delay: 100
 
 .slide-01.active
   .image-side
@@ -174,6 +197,11 @@
       transform: translateX(0px)
     &:nth-child(3)
       transform: translateX(0px)
+
+  .board-story-images
+    .image
+      transform: translateY(0)
+
 
 // shared --------------------------------------------------
 
@@ -209,16 +237,18 @@
   position: absolute
   right: 0
   top: 0
-  height: 100%
-  width: 5rem
+  height: calc(100% - 96px)
+  width: 4rem
+  opacity: .75
   background-color: $accent
   display: flex
   cursor: pointer
+  background-color: $gray-900
+  color: $white
 
   @media(max-width: map-get($grid-breakpoints, md))
     display: none
 
   .arrow-img
     display: block
-    height: 48px
     margin: auto

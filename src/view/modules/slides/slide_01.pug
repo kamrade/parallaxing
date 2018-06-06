@@ -15,9 +15,9 @@
 
       .board-story
         p.slide-label
-          span.blinking-fast [
+          span.blinking [
           span.animate-text-02A specialization
-          span.blinking-fast ]
+          span.blinking ]
         .board-story-block
           .story-text.lines-pattern
             p.mb-0.animate-text-02B.animate-text User interfaces, motion and interaction
@@ -36,7 +36,15 @@
             p.mb-0.animate-text-03B.animate-text Fulltime / freelance
           a(href="#").button-wrapper
             span.oi(data-glyph="chevron-right")
+      
+      .board-story
+        .board-story-images
+          .image.image-1
+            img(src="/img/iphone-01.png")
+          .image.image-2
+            img(src="/img/iphone-02.png")
 
   .col-md-4.image-side
-    .lines-pattern.arrow-right-slide( onClick="prlx.setSlide(2)" )
-      img.arrow-img.blinking(src="/img/arrow-right.png")
+    .arrow-right-slide( onClick="prlx.setSlide(2)" )
+      span.arrow-img
+        span.oi.blinking-moving-right(data-glyph="arrow-right")

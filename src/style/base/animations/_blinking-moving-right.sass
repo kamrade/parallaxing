@@ -1,0 +1,38 @@
+.blinking-moving-right
+  position: relative
+  display: block
+  animation: blinking-moving-right 1200ms linear infinite
+
+$step: 0.5rem
+
+@keyframes blinking-moving-right
+  0%
+    opacity: 1
+    transform: translateX(-1*$step)
+  19%
+    opacity: 1
+    transform: translateX(-1*$step)
+  20%
+    opacity: 0
+  29%
+    opacity: 0
+  30%
+    opacity: 1
+    transform: translateX(0*$step)
+  49%
+    opacity: 1
+    transform: translateX(0*$step)
+  50%
+    opacity: 0
+  59%
+    opacity: 0
+  60%
+    opacity: 1
+    transform: translateX($step)
+  79%
+    opacity: 1
+    transform: translateX($step)
+  80%
+    opacity: 0
+  100%
+    opacity: 0
